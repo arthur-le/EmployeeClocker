@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EmployeeClocker/UserMapViewController.swift"
-            timestampString = "475455118.880824"
+            timestampString = "475612825.899728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "onAdd(_:)"
             landmarkType = "5">
          </BreakpointContent>

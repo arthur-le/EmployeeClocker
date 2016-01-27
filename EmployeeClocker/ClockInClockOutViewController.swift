@@ -7,42 +7,52 @@
 
 import UIKit
 import CoreLocation
+import MapKit
+import Foundation
 
-class ClockInClockOutViewController: UIViewController{
+class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     //set username
     @IBOutlet var usernameLabel: UILabel!
     
-    override func viewDidLoad(){
+    var manager:CLLocationManager!
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        //set username
-        usernameLabel.text = EmployeeLoginViewController().getUsername()
-        //initialize loaction manager
+        
+        //Setup our Location Manager
 
-        
-    }
-    
-    //intialize location manager for potential location use
-
-
-    
-    @IBAction func clockInButton(sender: UIButton) {
-        //confirm location is on
-        
-        
-        
-        
     }
 
     
-    @IBAction func clockOutButton(sender: UIButton) {
+    @IBAction func confirmLocationButton(sender: UIButton) {
+        //Setup our Location Manager
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
+        
+        
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse{
+            manager.startUpdatingLocation()
+            print("Location is approved")
+            
+            timeToMoveOn()
+        }
         
     }
     
     
-    @IBAction func showCurrentLocation(sender: UIButton) {
+    func timeToMoveOn() {
+        self.performSegueWithIdentifier("transitionToMap", sender: self)
     }
+
     
-   
+    
+    
+
+
+
 
 }
