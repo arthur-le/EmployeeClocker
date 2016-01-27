@@ -10,7 +10,7 @@ import Parse
 import Bolts
 
 //globalvariable
-var username: String = ""
+var employeeUsername: String = ""
 
 
 class EmployeeLoginViewController: UIViewController{
@@ -29,11 +29,11 @@ class EmployeeLoginViewController: UIViewController{
 
     
     @IBAction func loginAction(sender: UIButton) {
-        username = usernameField.text!
-        print("Username is: " + username)
+        employeeUsername = usernameField.text!
+        print("Username is: " + employeeUsername)
         let password = self.passwordField.text
         
-        let usernameLength = username.characters.count
+        let usernameLength = employeeUsername.characters.count
         let passwordLength = password?.characters.count
         
         // Validate the text fields
@@ -51,13 +51,13 @@ class EmployeeLoginViewController: UIViewController{
             spinner.startAnimating()
             
             // Send a request to login
-            PFUser.logInWithUsernameInBackground((username), password:(password)!, block: { (user, error) -> Void in
+            PFUser.logInWithUsernameInBackground((employeeUsername), password:(password)!, block: { (user, error) -> Void in
                 
                 // Stop the spinner
                 spinner.stopAnimating()
                 
                 if ((user) != nil) {
-                    let alert = UIAlertView(title: "Success", message: "Logged In As: " + username, delegate: self, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Success", message: "Logged In As: " + employeeUsername, delegate: self, cancelButtonTitle: "OK")
                     alert.show()
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -75,9 +75,7 @@ class EmployeeLoginViewController: UIViewController{
     
     func getUsername() -> String
     {
-        print("ENTERING THE METHODDDDDD")
-        print("username is: " + username)
-        return (username)
+        return (employeeUsername)
     }
   
     

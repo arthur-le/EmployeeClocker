@@ -73,8 +73,6 @@ class AdminLoginViewController: UIViewController{
     
     func getUsername() -> String
     {
-        print("ENTERING THE METHODDDDDDDDDDDDD")
-        print("username is: " + adminUsername)
         return (adminUsername)
     }
 

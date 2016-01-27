@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		840821501C5696FA00F3B4D6 /* parse-library-1.12.0 in Resources */ = {isa = PBXBuildFile; fileRef = 8408214F1C5696FA00F3B4D6 /* parse-library-1.12.0 */; };
+		840821521C56D99700F3B4D6 /* UserMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840821511C56D99700F3B4D6 /* UserMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		840821541C56DCD200F3B4D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840821531C56DCD200F3B4D6 /* MapKit.framework */; };
+		840821571C56DD6800F3B4D6 /* Geotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840821551C56DD6800F3B4D6 /* Geotification.swift */; settings = {ASSET_TAGS = (); }; };
+		840821581C56DD6800F3B4D6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840821561C56DD6800F3B4D6 /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
 		842D20BD1C46F8D10046E8F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D20BC1C46F8D10046E8F7 /* AppDelegate.swift */; };
 		842D20BF1C46F8D10046E8F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D20BE1C46F8D10046E8F7 /* ViewController.swift */; };
 		842D20C21C46F8D10046E8F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D20C01C46F8D10046E8F7 /* Main.storyboard */; };
@@ -60,6 +64,10 @@
 
 /* Begin PBXFileReference section */
 		8408214F1C5696FA00F3B4D6 /* parse-library-1.12.0 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "parse-library-1.12.0"; sourceTree = "<group>"; };
+		840821511C56D99700F3B4D6 /* UserMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMapViewController.swift; sourceTree = "<group>"; };
+		840821531C56DCD200F3B4D6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		840821551C56DD6800F3B4D6 /* Geotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geotification.swift; sourceTree = "<group>"; };
+		840821561C56DD6800F3B4D6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		842D20B91C46F8D10046E8F7 /* EmployeeClocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeClocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		842D20BC1C46F8D10046E8F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		842D20BE1C46F8D10046E8F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840821541C56DCD200F3B4D6 /* MapKit.framework in Frameworks */,
+				84DFC9E51C50126300CB2F73 /* CoreLocation.framework in Frameworks */,
 				84DFC9D71C50126300CB2F73 /* Bolts.framework in Frameworks */,
 				84DFC9D81C50126300CB2F73 /* Parse.framework in Frameworks */,
 				84DFC9D91C50126300CB2F73 /* ParseFacebookUtils.framework in Frameworks */,
@@ -118,7 +128,6 @@
 				84DFC9E21C50126300CB2F73 /* StoreKit.framework in Frameworks */,
 				84DFC9E31C50126300CB2F73 /* Security.framework in Frameworks */,
 				84DFC9E41C50126300CB2F73 /* QuartzCore.framework in Frameworks */,
-				84DFC9E51C50126300CB2F73 /* CoreLocation.framework in Frameworks */,
 				84DFC9E61C50126300CB2F73 /* CoreGraphics.framework in Frameworks */,
 				84DFC9E71C50126300CB2F73 /* CFNetwork.framework in Frameworks */,
 				84DFC9E81C50126300CB2F73 /* AudioToolbox.framework in Frameworks */,
@@ -173,6 +182,9 @@
 				842D20BE1C46F8D10046E8F7 /* ViewController.swift */,
 				84EA99831C499B8400FB5C45 /* EmployeeLoginViewController.swift */,
 				84DFC9E91C50537D00CB2F73 /* ClockInClockOutViewController.swift */,
+				840821511C56D99700F3B4D6 /* UserMapViewController.swift */,
+				840821551C56DD6800F3B4D6 /* Geotification.swift */,
+				840821561C56DD6800F3B4D6 /* Utilities.swift */,
 				84EA99871C49AB6A00FB5C45 /* AdminLoginViewController.swift */,
 				84F9742E1C52F5F80089F68E /* AdminMainMenuViewController.swift */,
 				84EA997B1C49765A00FB5C45 /* temp.jpg */,
@@ -204,6 +216,7 @@
 		84DFC9D61C50123200CB2F73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				840821531C56DCD200F3B4D6 /* MapKit.framework */,
 				84DFC9CA1C50119E00CB2F73 /* Bolts.framework */,
 				84DFC9CB1C50119E00CB2F73 /* Parse.framework */,
 				84DFC9CC1C50119E00CB2F73 /* ParseFacebookUtils.framework */,
@@ -364,7 +377,10 @@
 			files = (
 				84EA99841C499B8400FB5C45 /* EmployeeLoginViewController.swift in Sources */,
 				842D20BF1C46F8D10046E8F7 /* ViewController.swift in Sources */,
+				840821581C56DD6800F3B4D6 /* Utilities.swift in Sources */,
 				84F9742F1C52F5F80089F68E /* AdminMainMenuViewController.swift in Sources */,
+				840821571C56DD6800F3B4D6 /* Geotification.swift in Sources */,
+				840821521C56D99700F3B4D6 /* UserMapViewController.swift in Sources */,
 				84EA99881C49AB6A00FB5C45 /* AdminLoginViewController.swift in Sources */,
 				842D20C51C46F8D10046E8F7 /* testApp.xcdatamodeld in Sources */,
 				84DFC9EA1C50537E00CB2F73 /* ClockInClockOutViewController.swift in Sources */,
