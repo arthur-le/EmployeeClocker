@@ -27,6 +27,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     @IBOutlet var usernameTextField: UITextField!
     
     @IBOutlet var userText: UILabel!
+    @IBOutlet var employeeUsername: UILabel!
     
     let manager = CLLocationManager()
 
@@ -43,6 +44,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        employeeUsername.text = EmployeeLoginViewController().getUsername()
         
         //navigationItem.rightBarButtonItems = [addButton, zoomButton]
         addButton.enabled = false

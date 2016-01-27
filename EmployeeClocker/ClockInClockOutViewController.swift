@@ -18,9 +18,10 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     var manager:CLLocationManager!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        //Setup our Location Manager
+        super.viewDidLoad()
+        //set username
+        usernameLabel.text = EmployeeLoginViewController().getUsername()
 
     }
 
