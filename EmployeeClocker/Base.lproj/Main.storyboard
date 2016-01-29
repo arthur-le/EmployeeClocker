@@ -414,30 +414,42 @@
                                                     </connections>
                                                 </mapView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGD-4s-u8w">
-                                                    <rect key="frame" x="33" y="48" width="92" height="30"/>
+                                                    <rect key="frame" x="33" y="48" width="61" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="92" id="ugf-TD-pZX"/>
+                                                        <constraint firstAttribute="width" constant="61" id="qaC-pi-A8g"/>
                                                     </constraints>
                                                     <state key="normal" image="CurrentLocation"/>
                                                     <connections>
                                                         <action selector="zoomToUserButton:" destination="S3e-xr-2Y3" eventType="touchUpInside" id="bbK-bb-Po2"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hK9-Pz-U7v">
-                                                    <rect key="frame" x="456" y="48" width="112" height="30"/>
-                                                    <state key="normal" title="Get Coordinates"/>
-                                                </button>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oqx-HA-3uj">
+                                                    <rect key="frame" x="519" y="48" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toggle User Follow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ny9-iq-pbE">
+                                                    <rect key="frame" x="397" y="53" width="114" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="114" id="GeL-je-jp6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="EGD-4s-u8w" firstAttribute="leading" secondItem="6XN-T5-CSk" secondAttribute="leading" id="AZ5-M0-iY5"/>
+                                                <constraint firstItem="Ny9-iq-pbE" firstAttribute="centerY" secondItem="oqx-HA-3uj" secondAttribute="centerY" id="6dB-eS-bUB"/>
+                                                <constraint firstItem="oqx-HA-3uj" firstAttribute="trailing" secondItem="6XN-T5-CSk" secondAttribute="trailing" id="7jj-JX-H9u"/>
+                                                <constraint firstItem="oqx-HA-3uj" firstAttribute="top" secondItem="EGD-4s-u8w" secondAttribute="top" id="9WJ-fQ-F5j"/>
+                                                <constraint firstItem="6XN-T5-CSk" firstAttribute="top" secondItem="EGD-4s-u8w" secondAttribute="bottom" constant="8" symbolic="YES" id="BSZ-RS-wbI"/>
+                                                <constraint firstItem="Ny9-iq-pbE" firstAttribute="baseline" secondItem="EGD-4s-u8w" secondAttribute="baseline" id="E6b-UP-rdR"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="6XN-T5-CSk" secondAttribute="bottom" constant="3" id="KEU-Vc-mNS"/>
-                                                <constraint firstItem="6XN-T5-CSk" firstAttribute="top" secondItem="hK9-Pz-U7v" secondAttribute="bottom" constant="8" symbolic="YES" id="Pew-eY-w6t"/>
-                                                <constraint firstItem="EGD-4s-u8w" firstAttribute="top" secondItem="4mB-f8-Hai" secondAttribute="topMargin" constant="40" id="Qct-k4-G1r"/>
-                                                <constraint firstItem="hK9-Pz-U7v" firstAttribute="trailing" secondItem="6XN-T5-CSk" secondAttribute="trailing" id="Qxj-Z2-vS3"/>
+                                                <constraint firstItem="Ny9-iq-pbE" firstAttribute="centerY" secondItem="EGD-4s-u8w" secondAttribute="centerY" id="N1h-zE-Bqu"/>
+                                                <constraint firstItem="EGD-4s-u8w" firstAttribute="leading" secondItem="6XN-T5-CSk" secondAttribute="leading" id="STA-BJ-4H9"/>
                                                 <constraint firstItem="6XN-T5-CSk" firstAttribute="centerX" secondItem="4mB-f8-Hai" secondAttribute="centerX" id="Xyr-OX-Fzp"/>
-                                                <constraint firstItem="6XN-T5-CSk" firstAttribute="top" secondItem="EGD-4s-u8w" secondAttribute="bottom" constant="8" symbolic="YES" id="YIt-Hx-8jx"/>
-                                                <constraint firstItem="hK9-Pz-U7v" firstAttribute="top" secondItem="EGD-4s-u8w" secondAttribute="top" id="cGG-Ks-Ax0"/>
+                                                <constraint firstItem="6XN-T5-CSk" firstAttribute="top" secondItem="Ny9-iq-pbE" secondAttribute="bottom" constant="12" id="dt1-vL-btK"/>
+                                                <constraint firstItem="EGD-4s-u8w" firstAttribute="top" secondItem="4mB-f8-Hai" secondAttribute="topMargin" constant="40" id="jcn-NN-352"/>
                                                 <constraint firstItem="6XN-T5-CSk" firstAttribute="leading" secondItem="4mB-f8-Hai" secondAttribute="leadingMargin" constant="25" id="nCl-4j-7VZ"/>
+                                                <constraint firstItem="oqx-HA-3uj" firstAttribute="leading" secondItem="Ny9-iq-pbE" secondAttribute="trailing" constant="8" symbolic="YES" id="pHg-BA-NI2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -525,8 +537,10 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="Vv2-Nu-oNn" id="llf-YJ-qvB"/>
+                        <outlet property="detailTextField" destination="QQ9-Bi-T7u" id="XOx-Sm-09U"/>
                         <outlet property="employeeUsername" destination="JQC-gF-v22" id="Gnq-DZ-Gem"/>
                         <outlet property="mapView" destination="6XN-T5-CSk" id="vcG-7b-Vei"/>
+                        <outlet property="mySwitch" destination="oqx-HA-3uj" id="3Dq-ry-75e"/>
                         <outlet property="noteTextField" destination="QQ9-Bi-T7u" id="Shi-eF-bsQ"/>
                         <outlet property="userText" destination="NkV-ws-9l7" id="bpM-HE-775"/>
                     </connections>
