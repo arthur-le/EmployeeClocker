@@ -89,12 +89,11 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     }
     
     //sets coordinates to details textfield everytime user moves
+    //constantly called as location changes
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
-        print("LOCATION UPDATINGGGG")
         
         
         if mySwitch.on {
-            print("Switch is on")
             
             // switch is on
             let spanX = 0.007
@@ -103,7 +102,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             mapView.setRegion(newRegion, animated: true)
             
         } else {
-            print("Switch is off")
+            //switch is off
             
         }
         
@@ -114,13 +113,17 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         //creates location points into myLocations
         myLocations.append(locations[0] as! CLLocation)
         
+        //supposed to draw line between points...
         if (myLocations.count > 1){
+            print("ENTERING DRAWING LINE METHOD")
             var sourceIndex = myLocations.count - 1
             var destinationIndex = myLocations.count - 2
             
             let c1 = myLocations[sourceIndex].coordinate
             let c2 = myLocations[destinationIndex].coordinate
             var a = [c1, c2]
+            //a hold two location points. Both with longitude and latitude values
+            print("A is: ", a)
             var polyline = MKPolyline(coordinates: &a, count: a.count)
             mapView.addOverlay(polyline)
         }
