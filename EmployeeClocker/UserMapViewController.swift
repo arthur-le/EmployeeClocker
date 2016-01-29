@@ -115,7 +115,6 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         
         //supposed to draw line between points...
         if (myLocations.count > 1){
-            print("ENTERING DRAWING LINE METHOD")
             var sourceIndex = myLocations.count - 1
             var destinationIndex = myLocations.count - 2
             

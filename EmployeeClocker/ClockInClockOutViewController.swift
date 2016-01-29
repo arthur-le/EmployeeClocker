@@ -31,14 +31,14 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestAlwaysAuthorization()
+        self.manager.requestAlwaysAuthorization();
         manager.startUpdatingLocation()
         
+
         
-        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse{
+        if CLLocationManager.authorizationStatus() == .AuthorizedAlways{
+            print("Location ALWAYS APPROVEDDDD")
             manager.startUpdatingLocation()
-            print("Location is approved")
-            
             timeToMoveOn()
         }
         
@@ -46,6 +46,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     
     
     func timeToMoveOn() {
+        print("Entering time to move on")
         self.performSegueWithIdentifier("transitionToMap", sender: self)
     }
 

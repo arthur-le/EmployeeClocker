@@ -220,7 +220,6 @@
                                 <state key="normal" title="Confirm Your Current Location"/>
                                 <connections>
                                     <action selector="confirmLocationButton:" destination="NR3-2o-qkp" eventType="touchUpInside" id="iJ4-t8-B5X"/>
-                                    <segue destination="S3e-xr-2Y3" kind="showDetail" identifier="transitionToMap" id="xyf-sH-FJ1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -241,11 +240,12 @@
                     <navigationItem key="navigationItem" id="W9a-af-sAC"/>
                     <connections>
                         <outlet property="usernameLabel" destination="baX-oZ-U19" id="QAH-Gy-axL"/>
+                        <segue destination="S3e-xr-2Y3" kind="modal" identifier="transitionToMap" id="sQM-ZQ-nVC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0j-qz-oM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1962" y="541"/>
+            <point key="canvasLocation" x="1991" y="541"/>
         </scene>
         <!--Intro Screen View Controller-->
         <scene sceneID="vLC-U9-2ll">
@@ -558,7 +558,7 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="2624" y="541"/>
+            <point key="canvasLocation" x="2679" y="541"/>
         </scene>
     </scenes>
     <resources>
@@ -566,6 +566,6 @@
         <image name="temp.jpg" width="3000" height="2138"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sd1-9h-pFc"/>
+        <segue reference="Aft-vH-4iv"/>
     </inferredMetricsTieBreakers>
 </document>
