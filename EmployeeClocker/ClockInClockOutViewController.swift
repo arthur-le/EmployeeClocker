@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 import Foundation
+import Parse
 
 class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
@@ -25,6 +26,29 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
 
     }
 
+    @IBAction func clockInAction(sender: UIButton) {
+        
+        var query = PFQuery(className:"UserLocation")
+        query.whereKey("username", equalTo:EmployeeLoginViewController().getUsername())
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully confirmed \(objects!.count) username.")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        print(object.objectId)
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+        
+    }
     
     @IBAction func confirmLocationButton(sender: UIButton) {
         //Setup our Location Manager

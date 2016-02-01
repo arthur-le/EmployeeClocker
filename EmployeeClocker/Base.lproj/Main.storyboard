@@ -206,7 +206,7 @@
                                 <rect key="frame" x="272" y="174" width="56" height="30"/>
                                 <state key="normal" title="Clock In"/>
                                 <connections>
-                                    <action selector="clockInButton:" destination="NR3-2o-qkp" eventType="touchUpInside" id="fuh-Q4-f12"/>
+                                    <action selector="clockInAction:" destination="NR3-2o-qkp" eventType="touchUpInside" id="IxE-gX-lPj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baX-oZ-U19">
