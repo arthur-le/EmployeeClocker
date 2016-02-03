@@ -26,27 +26,16 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
 
     }
 
-    @IBAction func clockInAction(sender: UIButton) {
+    @IBAction func clockInAction(sender: UIButton){
+        //let query = PFQuery(className: "UserLocation")
+        //query.whereKey("username", equalTo: "arthurle")
+        //query.selectKeys(["username", "clockInTime", "clockOutTime","location"])
+        //let arrayCurrentData = try! query.findObjects() as [PFObject]
         
-        var query = PFQuery(className:"UserLocation")
-        query.whereKey("username", equalTo:EmployeeLoginViewController().getUsername())
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                print("Successfully confirmed \(objects!.count) username.")
-                // Do something with the found objects
-                if let objects = objects {
-                    for object in objects {
-                        print(object.objectId)
-                    }
-                }
-            } else {
-                // Log details of the failure
-                print("Error: \(error!) \(error!.userInfo)")
-            }
-        }
+       //print(arrayCurrentData)
+
+
+   
         
     }
     
