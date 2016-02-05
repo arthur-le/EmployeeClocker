@@ -29,32 +29,33 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     @IBAction func clockInAction(sender: UIButton)
     {
         let query = PFQuery(className: "UserLocations")
-        //query.findObjectsInBackgroundWithBlock{(objects,error) -> Void in
-          //  if error == nil
-            //{
-              //  if let returnedobjects = objects
-                //{
-                  //  for object in returnedobjects
-                    //{
-                      //  print("Username is: ", object["username"] as! String)
-                        //print("Clock in date is: ", object["clockInTime"] as! NSDate)
-                        //print("Location is: ", object["location"] as! String)
-                    //}
-                //}
-            //}
-            
-        //}
-        
         //query constraint works cool
-        query.whereKey("username", equalTo: usernameLabel.text!)
+        query.whereKey("username", equalTo:usernameLabel.text!)
         //line will test all above constraints
         query.findObjectsInBackgroundWithBlock{(objects,error) -> Void in
             if error == nil{
-                let arrayCurrentData = try! query.findObjects() as [PFObject]
-                
-                print("Testing constraints: ", arrayCurrentData)
+                if let returnedobjects = objects
+                {
+                    for object in returnedobjects
+                    {
+                        print("Username is: ", object["username"] as! String)
+                        print("Clock in date is: ", object["clockInTime"] as! NSDate)
+                        print("Location is: ", object["location"] as! String)
+                    }
+                }
             }
         }
+        
+        //query constraint works cool
+        //query.whereKey("username", equalTo: usernameLabel.text!)
+        //line will test all above constraints
+        //query.findObjectsInBackgroundWithBlock{(objects,error) -> Void in
+            //if error == nil{
+                //let arrayCurrentData = try! query.findObjects() as [PFObject]
+                
+                //print("Testing constraints: ", arrayCurrentData)
+            //}
+        //}
         
     }
     
@@ -67,13 +68,18 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         //line will test all above constraints
         query.findObjectsInBackgroundWithBlock{(objects,error) -> Void in
             if error == nil{
-                let arrayCurrentData = try! query.findObjects() as [PFObject]
-                
-                print("Testing constraints: ", arrayCurrentData)
+                if let returnedobjects = objects
+                {
+                  for object in returnedobjects
+                  {
+                    print("Username is: ", object["username"] as! String)
+                    print("Clock n date is: ", object["clockInTime"] as! NSDate)
+                    print("Location is: ", object["location"] as! String)
+                  }
+                }
             }
         }
     }
-    
     
     
     
@@ -88,7 +94,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
 
         
         if CLLocationManager.authorizationStatus() == .AuthorizedAlways{
-            print("Location ALWAYS APPROVEDDDD")
             manager.startUpdatingLocation()
             timeToMoveOn()
         }
@@ -97,7 +102,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     
     
     func timeToMoveOn() {
-        print("Entering time to move on")
         self.performSegueWithIdentifier("transitionToMap", sender: self)
     }
 

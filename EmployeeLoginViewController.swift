@@ -30,7 +30,6 @@ class EmployeeLoginViewController: UIViewController{
     
     @IBAction func loginAction(sender: UIButton) {
         employeeUsername = usernameField.text!
-        print("Username is: " + employeeUsername)
         let password = self.passwordField.text
         
         let usernameLength = employeeUsername.characters.count
