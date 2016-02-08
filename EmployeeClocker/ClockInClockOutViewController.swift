@@ -18,6 +18,9 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     
     var manager:CLLocationManager!
     
+    var myLocations: [CLLocation] = []
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -26,8 +29,37 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
 
     }
 
+    func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
+        
+        
+        //creates location points into myLocations
+        myLocations.append(locations[0] as! CLLocation)
+        
+        //supposed to draw line between points...
+        if (myLocations.count > 1){
+            
+            let c1 = myLocations[0].coordinate
+            //a hold two location points. Both with longitude and latitude values
+
+        }
+    }
+
+    
+    
     @IBAction func clockInAction(sender: UIButton)
     {
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        self.manager.requestAlwaysAuthorization();
+        manager.startUpdatingLocation()
+        
+        
+        if CLLocationManager.authorizationStatus() == .AuthorizedAlways{
+            manager.startUpdatingLocation()
+        }
+        
+        
         let query = PFQuery(className: "UserLocations")
         //query constraint works cool
         query.whereKey("username", equalTo:usernameLabel.text!)
@@ -40,7 +72,11 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     {
                         print("Username is: ", object["username"] as! String)
                         print("Clock in date is: ", object["clockInTime"] as! NSDate)
-                        print("Location is: ", object["location"] as! String)
+                        
+                        //set location here
+                        
+                    
+                        print("Location is: ", self.myLocations[self.myLocations.count - 1])
                     }
                 }
             }

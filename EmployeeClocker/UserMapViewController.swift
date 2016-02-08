@@ -85,7 +85,6 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         mapView.delegate = self
         mapView.showsUserLocation = true
         
-     
     }
     
     //sets coordinates to details textfield everytime user moves
@@ -103,7 +102,6 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             
         } else {
             //switch is off
-            
         }
         
         
@@ -127,6 +125,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             mapView.addOverlay(polyline)
         }
     }
+    
     
     @IBAction func textFieldEditingChanged(sender: UITextField) {
         addButton.enabled = !radiusTextField.text!.isEmpty && !noteTextField.text!.isEmpty
