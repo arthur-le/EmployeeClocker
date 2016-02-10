@@ -36,8 +36,6 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     @IBOutlet var detailTextField: UITextField!
     
     
-       
-    
     
     var manager:CLLocationManager!
 
@@ -59,20 +57,14 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         super.viewDidLoad()
         employeeUsername.text = EmployeeLoginViewController().getUsername()
         
-        //navigationItem.rightBarButtonItems = [addButton, zoomButton]
         addButton.enabled = false
         
         tableView.tableFooterView = UIView()
-        
       
         
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        if CLLocationManager.authorizationStatus() == .NotDetermined {
-            manager.requestWhenInUseAuthorization()
-        }
         
         //check for location changes
         //if locations change, calls func locationManager
@@ -121,9 +113,23 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             var a = [c1, c2]
             //a hold two location points. Both with longitude and latitude values
             print("A is: ", a)
-            var polyline = MKPolyline(coordinates: &a, count: a.count)
+            
+            let polyline = MKPolyline(coordinates: &a, count: a.count)
             mapView.addOverlay(polyline)
         }
+    }
+    
+    
+    //poly line testing
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        
+        if overlay is MKPolyline {
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.blueColor()
+            polylineRenderer.lineWidth = 4
+            return polylineRenderer
+        }
+        return nil
     }
     
     

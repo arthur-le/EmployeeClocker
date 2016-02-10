@@ -26,6 +26,13 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         super.viewDidLoad()
         //set username
         usernameLabel.text = EmployeeLoginViewController().getUsername()
+        
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        self.manager.requestWhenInUseAuthorization();
+        //self.manager.requestAlwaysAuthorization();
+        manager.startUpdatingLocation()
 
     }
 
@@ -43,22 +50,14 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
 
         }
     }
-
     
     
     @IBAction func clockInAction(sender: UIButton)
     {
-        manager = CLLocationManager()
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        self.manager.requestAlwaysAuthorization();
-        manager.startUpdatingLocation()
-        
-        
-        if CLLocationManager.authorizationStatus() == .AuthorizedAlways{
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             manager.startUpdatingLocation()
+            
         }
-        
         
         let query = PFQuery(className: "UserLocations")
         //query constraint works cool
@@ -75,12 +74,13 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                         
                         //set location here
                         
-                    
+                        
                         print("Location is: ", self.myLocations[self.myLocations.count - 1])
                     }
                 }
             }
         }
+
         
         //query constraint works cool
         //query.whereKey("username", equalTo: usernameLabel.text!)
@@ -94,7 +94,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         //}
         
     }
-    
     
     @IBAction func clockOutAction(sender: UIButton) {
         
@@ -124,12 +123,10 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        self.manager.requestAlwaysAuthorization();
         manager.startUpdatingLocation()
         
-
         
-        if CLLocationManager.authorizationStatus() == .AuthorizedAlways{
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse{
             manager.startUpdatingLocation()
             timeToMoveOn()
         }
