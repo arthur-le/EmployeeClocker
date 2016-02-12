@@ -56,8 +56,9 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             manager.startUpdatingLocation()
-            
+
         }
+
         
         let query = PFQuery(className: "UserLocations")
         //query constraint works cool
@@ -80,6 +81,12 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                 }
             }
         }
+        
+        //trying to update date
+        //look up updating objects on parse website to update date when button is clicked. Then set restraints
+        
+        
+        
 
         
         //query constraint works cool

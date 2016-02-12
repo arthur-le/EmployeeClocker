@@ -25,16 +25,14 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     @IBOutlet weak var eventTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var radiusTextField: UITextField!
     @IBOutlet var usernameTextField: UITextField!
-
+    
     
     @IBOutlet var mySwitch: UISwitch!
-    
     
     
     @IBOutlet var userText: UILabel!
     @IBOutlet var employeeUsername: UILabel!
     @IBOutlet var detailTextField: UITextField!
-    
     
     
     var manager:CLLocationManager!
@@ -52,6 +50,8 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     
     //will hold array of locations
     var myLocations: [CLLocation] = []
+    var locationCoordinates: [CLLocationCoordinate2D] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,17 +103,29 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         //creates location points into myLocations
         myLocations.append(locations[0] as! CLLocation)
         
+        
+        
         //supposed to draw line between points...
         if (myLocations.count > 1){
-            var sourceIndex = myLocations.count - 1
-            var destinationIndex = myLocations.count - 2
+            var sourceIndex = myLocations.count - 2
+            var destinationIndex = myLocations.count - 1
             
             let c1 = myLocations[sourceIndex].coordinate
             let c2 = myLocations[destinationIndex].coordinate
+            locationCoordinates.append(c1)
+            
             var a = [c1, c2]
             //a hold two location points. Both with longitude and latitude values
-            print("A is: ", a)
             
+            //so poly line data read from 'a' array
+            //print("A is: ", a)'
+            
+            //and all longitudes and lat stored in myLocations array
+            //print("My locations is: ", myLocations)
+            
+            print("Location Coordinate is: ", locationCoordinates)
+            
+            //long and lat coordinates &a, count: a.count
             let polyline = MKPolyline(coordinates: &a, count: a.count)
             mapView.addOverlay(polyline)
         }
