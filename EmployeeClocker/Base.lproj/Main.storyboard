@@ -222,11 +222,23 @@
                                     <action selector="confirmLocationButton:" destination="NR3-2o-qkp" eventType="touchUpInside" id="iJ4-t8-B5X"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Clocked In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ir8-Js-ec1">
+                                <rect key="frame" x="160" y="133" width="281" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="1HP-HG-HBB"/>
+                                    <constraint firstAttribute="width" constant="281" id="80G-th-LKE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ir8-Js-ec1" firstAttribute="centerX" secondItem="6JM-lt-drX" secondAttribute="centerX" id="CBu-1w-6TW"/>
                             <constraint firstItem="baX-oZ-U19" firstAttribute="leading" secondItem="hl7-Kz-WwC" secondAttribute="trailing" constant="15" id="Fsy-3C-y92"/>
                             <constraint firstItem="6JM-lt-drX" firstAttribute="centerX" secondItem="KUx-oJ-dcg" secondAttribute="centerX" id="G7v-xt-7tY"/>
+                            <constraint firstItem="6JM-lt-drX" firstAttribute="top" secondItem="ir8-Js-ec1" secondAttribute="bottom" constant="8" symbolic="YES" id="Kfl-gZ-OQI"/>
                             <constraint firstItem="hl7-Kz-WwC" firstAttribute="leading" secondItem="KUx-oJ-dcg" secondAttribute="leadingMargin" constant="-3" id="M1K-df-PuD"/>
                             <constraint firstItem="KRE-Dm-gni" firstAttribute="centerX" secondItem="6JM-lt-drX" secondAttribute="centerX" id="QKV-0H-JTV"/>
                             <constraint firstItem="hl7-Kz-WwC" firstAttribute="baseline" secondItem="baX-oZ-U19" secondAttribute="baseline" id="S6v-go-EtA"/>
@@ -239,8 +251,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="W9a-af-sAC"/>
                     <connections>
+                        <outlet property="locationLabel" destination="ir8-Js-ec1" id="7Eb-PA-C0S"/>
                         <outlet property="usernameLabel" destination="baX-oZ-U19" id="QAH-Gy-axL"/>
-                        <segue destination="S3e-xr-2Y3" kind="modal" identifier="transitionToMap" id="sQM-ZQ-nVC"/>
+                        <segue destination="S3e-xr-2Y3" kind="presentation" identifier="transitionToMap" id="sQM-ZQ-nVC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0j-qz-oM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -470,6 +483,13 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePq-zw-wwl">
+                                                    <rect key="frame" x="46" y="10" width="34" height="30"/>
+                                                    <state key="normal" title="Back"/>
+                                                    <connections>
+                                                        <segue destination="NR3-2o-qkp" kind="modal" id="FgP-GW-ptW"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ny9-iq-pbE" firstAttribute="centerY" secondItem="oqx-HA-3uj" secondAttribute="centerY" id="6dB-eS-bUB"/>
@@ -567,5 +587,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Sd1-9h-pFc"/>
+        <segue reference="FgP-GW-ptW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     
     var myLocations: [CLLocation] = []
     
+    @IBOutlet var locationLabel: UILabel!
     
     override func viewDidLoad() {
         
@@ -58,6 +59,15 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
             manager.startUpdatingLocation()
 
         }
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        
+        
+        //dateString now contains the string:
+        //  "December 25, 2014 at 7:00:00 AM"
 
         
         let query = PFQuery(className: "UserLocations")
@@ -72,8 +82,15 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     {
                         print("Username is: ", object["username"] as! String)
                         print("Clock in date is: ", object["clockInTime"] as! NSDate)
-                        
                         //set location here
+                        object["clockInTime"] = NSDate()
+                        
+                        let dateString = formatter.stringFromDate(object["clockInTime"] as! NSDate)
+                        
+                        print("New clock in date is: ", dateString)
+                        
+                        self.locationLabel.text = dateString
+                        object.saveInBackground()
                         
                         
                         print("Location is: ", self.myLocations[self.myLocations.count - 1])
@@ -82,8 +99,20 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
             }
         }
         
+        
+        
         //trying to update date
         //look up updating objects on parse website to update date when button is clicked. Then set restraints
+       // query.findObjectsInBackgroundWithBlock {
+          //  (currentUser: PFObject?, error: NSError?) -> Void in
+         //   if error != nil {
+       //         print(error)
+        //    } else if let currentUser = currentUser {
+          //      currentUser["clockInTime"] = NSDate()
+        //        currentUser.saveInBackground()
+      //      }
+    //    }
+
         
         
         
