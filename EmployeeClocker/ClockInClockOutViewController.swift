@@ -11,6 +11,8 @@ import MapKit
 import Foundation
 import Parse
 
+ var yourVariable:UIViewController!
+
 class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
     //set username
@@ -19,6 +21,8 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     var manager:CLLocationManager!
     
     var myLocations: [CLLocation] = []
+    
+   
     
     @IBOutlet var locationLabel: UILabel!
     
@@ -63,11 +67,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
-        
-        
-        
-        //dateString now contains the string:
-        //  "December 25, 2014 at 7:00:00 AM"
 
         
         let query = PFQuery(className: "UserLocations")
@@ -162,15 +161,38 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         manager.startUpdatingLocation()
         
         
+       // if yourVariable == nil {
+         //   let storyboard = UIStoryboard(name: "MainStoryboard", bundle: nil)
+           // yourVariable = storyboard.instantiateViewControllerWithIdentifier("SecondViewController") as! UIViewController
+       // }
+        //self.presentViewController(yourVariable, animated: true, completion: nil)
+        
+        
+        
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse{
             manager.startUpdatingLocation()
-            timeToMoveOn()
+            if yourVariable == nil {
+                print("Testing current in inner should only show once")
+                //yourVariable = storyboard!.instantiateViewControllerWithIdentifier("UserMap") as! UIViewController
+             
+                let yourVariable = self.storyboard!.instantiateViewControllerWithIdentifier("UserMap") as! UIViewController
+
+            }
+            print("testing now in outer")
+            //self.presentViewController(yourVariable, animated: true, completion: nil)
+            
+            self.navigationController!.pushViewController(yourVariable, animated: true)
+            //currently not working
+            
+    
+            //timeToMoveOn()
         }
         
     }
     
     
     func timeToMoveOn() {
+        //delelted the segue, gotta re-add if want to use
         self.performSegueWithIdentifier("transitionToMap", sender: self)
     }
 

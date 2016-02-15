@@ -50,6 +50,7 @@ class EmployeeLoginViewController: UIViewController{
             spinner.startAnimating()
             
             // Send a request to login
+            //checks parse database for username and pw verification
             PFUser.logInWithUsernameInBackground((employeeUsername), password:(password)!, block: { (user, error) -> Void in
                 
                 // Stop the spinner
@@ -77,13 +78,6 @@ class EmployeeLoginViewController: UIViewController{
         return (employeeUsername)
     }
   
-    
-    
-    func verifyUserInDatabase()
-    {
-        //verify user in database and log them in when log in button hit
-        
-    }
     
     
     

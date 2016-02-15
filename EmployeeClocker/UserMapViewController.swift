@@ -34,6 +34,8 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     @IBOutlet var employeeUsername: UILabel!
     @IBOutlet var detailTextField: UITextField!
     
+    //var yourVariable:UIViewController!
+    
     
     var manager:CLLocationManager!
 
@@ -123,7 +125,8 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             //and all longitudes and lat stored in myLocations array
             //print("My locations is: ", myLocations)
             
-            print("Location Coordinate is: ", locationCoordinates)
+            //prints out array holding the coords
+            //print("Location Coordinate is: ", locationCoordinates)
             
             //long and lat coordinates &a, count: a.count
             let polyline = MKPolyline(coordinates: &a, count: a.count)
@@ -165,4 +168,9 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     @IBAction private func onZoomToCurrentLocation(sender: AnyObject) {
         zoomToUserLocationInMapView(mapView)
     }
+    
+    
+    
+    
+    
 }
