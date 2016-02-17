@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msf-gw-MKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="541"/>
+            <point key="canvasLocation" x="1349" y="396"/>
         </scene>
         <!--Admin Main Menu View Controller-->
         <scene sceneID="YOK-Bb-2a2">
@@ -189,7 +189,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRE-Dm-gni">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRE-Dm-gni">
                                 <rect key="frame" x="266" y="360" width="68" height="30"/>
                                 <state key="normal" title="Clock Out"/>
                                 <connections>
@@ -215,13 +215,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irv-7O-i4U">
-                                <rect key="frame" x="20" y="550" width="209" height="30"/>
-                                <state key="normal" title="Confirm Your Current Location"/>
-                                <connections>
-                                    <action selector="confirmLocationButton:" destination="NR3-2o-qkp" eventType="touchUpInside" id="iJ4-t8-B5X"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Clocked In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ir8-Js-ec1">
                                 <rect key="frame" x="160" y="133" width="281" height="33"/>
                                 <constraints>
@@ -232,6 +225,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irv-7O-i4U">
+                                <rect key="frame" x="17" y="518" width="209" height="30"/>
+                                <state key="normal" title="Confirm Your Current Location"/>
+                                <connections>
+                                    <action selector="confirmLocationButton:" destination="NR3-2o-qkp" eventType="touchUpInside" id="iJ4-t8-B5X"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -242,22 +242,23 @@
                             <constraint firstItem="hl7-Kz-WwC" firstAttribute="leading" secondItem="KUx-oJ-dcg" secondAttribute="leadingMargin" constant="-3" id="M1K-df-PuD"/>
                             <constraint firstItem="KRE-Dm-gni" firstAttribute="centerX" secondItem="6JM-lt-drX" secondAttribute="centerX" id="QKV-0H-JTV"/>
                             <constraint firstItem="hl7-Kz-WwC" firstAttribute="baseline" secondItem="baX-oZ-U19" secondAttribute="baseline" id="S6v-go-EtA"/>
+                            <constraint firstItem="irv-7O-i4U" firstAttribute="leading" secondItem="hl7-Kz-WwC" secondAttribute="leading" id="Uog-kH-bu3"/>
                             <constraint firstItem="csT-PL-Gfb" firstAttribute="top" secondItem="KRE-Dm-gni" secondAttribute="bottom" constant="210" id="Ztf-Oe-0sG"/>
-                            <constraint firstItem="irv-7O-i4U" firstAttribute="leading" secondItem="KUx-oJ-dcg" secondAttribute="leadingMargin" id="eGA-P5-cLL"/>
                             <constraint firstItem="6JM-lt-drX" firstAttribute="top" secondItem="foa-RQ-djs" secondAttribute="bottom" constant="154" id="iiH-Q9-9jl"/>
                             <constraint firstItem="hl7-Kz-WwC" firstAttribute="top" secondItem="foa-RQ-djs" secondAttribute="bottom" constant="8" symbolic="YES" id="kP7-ZH-EhM"/>
-                            <constraint firstAttribute="bottom" secondItem="irv-7O-i4U" secondAttribute="bottom" constant="20" symbolic="YES" id="vur-PX-8lE"/>
+                            <constraint firstItem="csT-PL-Gfb" firstAttribute="top" secondItem="irv-7O-i4U" secondAttribute="bottom" constant="8" symbolic="YES" id="nzT-Fv-NE7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W9a-af-sAC"/>
                     <connections>
                         <outlet property="locationLabel" destination="ir8-Js-ec1" id="7Eb-PA-C0S"/>
                         <outlet property="usernameLabel" destination="baX-oZ-U19" id="QAH-Gy-axL"/>
+                        <segue destination="S3e-xr-2Y3" kind="modal" identifier="transitionToMap" id="iWh-WW-rkg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0j-qz-oM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1991" y="541"/>
+            <point key="canvasLocation" x="2055" y="346"/>
         </scene>
         <!--Intro Screen View Controller-->
         <scene sceneID="vLC-U9-2ll">
@@ -486,7 +487,7 @@
                                                     <rect key="frame" x="46" y="10" width="34" height="30"/>
                                                     <state key="normal" title="Back"/>
                                                     <connections>
-                                                        <segue destination="NR3-2o-qkp" kind="push" id="64L-G6-q7B"/>
+                                                        <segue destination="NR3-2o-qkp" kind="modal" id="2xj-Lm-fVo"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -577,7 +578,7 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="2679" y="541"/>
+            <point key="canvasLocation" x="2780" y="293"/>
         </scene>
     </scenes>
     <resources>
@@ -585,7 +586,7 @@
         <image name="temp.jpg" width="3000" height="2138"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="2xj-Lm-fVo"/>
         <segue reference="Sd1-9h-pFc"/>
-        <segue reference="64L-G6-q7B"/>
     </inferredMetricsTieBreakers>
 </document>

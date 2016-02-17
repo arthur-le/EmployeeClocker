@@ -171,21 +171,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse{
             manager.startUpdatingLocation()
-            if yourVariable == nil {
-                print("Testing current in inner should only show once")
-                //yourVariable = storyboard!.instantiateViewControllerWithIdentifier("UserMap") as! UIViewController
-             
-                let yourVariable = self.storyboard!.instantiateViewControllerWithIdentifier("UserMap") as! UIViewController
-
-            }
-            print("testing now in outer")
-            //self.presentViewController(yourVariable, animated: true, completion: nil)
-            
-            self.navigationController!.pushViewController(yourVariable, animated: true)
-            //currently not working
-            
-    
-            //timeToMoveOn()
+            timeToMoveOn()
         }
         
     }

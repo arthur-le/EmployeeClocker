@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Foundation
-
+import Parse
 
 protocol AddGeotificationsViewControllerDelegate {
     func addGeotificationViewController(controller: UserMapViewController, didAddCoordinate coordinate: CLLocationCoordinate2D,
@@ -79,7 +79,26 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         mapView.delegate = self
         mapView.showsUserLocation = true
         
+        
+        
+        //testing preserving viewcontroller
+
+        
     }
+    
+    override func encodeRestorableStateWithCoder(coder: NSCoder) {
+
+        super.encodeRestorableStateWithCoder(coder)
+    }
+    
+    override func decodeRestorableStateWithCoder(coder: NSCoder) {
+
+        super.decodeRestorableStateWithCoder(coder)
+    }
+
+    
+
+    
     
     //sets coordinates to details textfield everytime user moves
     //constantly called as location changes
@@ -115,6 +134,52 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             let c1 = myLocations[sourceIndex].coordinate
             let c2 = myLocations[destinationIndex].coordinate
             locationCoordinates.append(c1)
+            
+            //now push locationcoordinates onto parse
+            let query = PFQuery(className: "UserLocations")
+            //query constraint works cool
+            query.whereKey("username", equalTo:employeeUsername.text!)
+            //line will test all above constraints
+            query.findObjectsInBackgroundWithBlock{(objects,error) -> Void in
+                if error == nil{
+                    if let returnedobjects = objects
+                    {
+                        for object in returnedobjects
+                        {
+                            print("Username is: ", object["username"] as! String)
+                            print("Clock in date is: ", object["clockInTime"] as! NSDate)
+                            
+                            
+                            
+                            
+                            //PFGeoPoint point = [PFGeoPoint geoPointWithLatitude:37.77 longitude:-122.41]
+                            
+                            //set location here
+                            //object["locationArray"] = self.locationCoordinates as! Array
+                            
+                            
+                            
+                            
+                            let locationString = (object["locationArray"])
+                            
+                            //print("New clock in date is: ", locationString)
+
+                            object.saveInBackground()
+                            
+                            
+                            print("Location is: ", self.myLocations[self.myLocations.count - 1])
+                        }
+                    }
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
             
             var a = [c1, c2]
             //a hold two location points. Both with longitude and latitude values

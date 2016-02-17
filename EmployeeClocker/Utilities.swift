@@ -20,7 +20,7 @@ func showSimpleAlertWithTitle(title: String!, message: String, viewController: U
 
 func zoomToUserLocationInMapView(mapView: MKMapView) {
   if let coordinate = mapView.userLocation.location?.coordinate {
-    let region = MKCoordinateRegionMakeWithDistance(coordinate, 10000, 10000)
+    let region = MKCoordinateRegionMakeWithDistance(coordinate, 9000, 9000)
     mapView.setRegion(region, animated: true)
   }
 }
