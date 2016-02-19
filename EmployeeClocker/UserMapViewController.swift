@@ -206,7 +206,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         if overlay is MKPolyline {
             let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRenderer.strokeColor = UIColor.blueColor()
-            polylineRenderer.lineWidth = 4
+            polylineRenderer.lineWidth = 3
             return polylineRenderer
         }
         return nil

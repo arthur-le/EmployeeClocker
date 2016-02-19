@@ -47,13 +47,47 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         //creates location points into myLocations
         myLocations.append(locations[0] as! CLLocation)
         
-        //supposed to draw line between points...
-        if (myLocations.count > 1){
-            
-            let c1 = myLocations[0].coordinate
-            //a hold two location points. Both with longitude and latitude values
-
+        
+        let point = PFGeoPoint(location: locations[0] as!CLLocation)
+        
+        print("Point is: ", point)
+        
+        //PFObject *placeObject = [PFObject objectWithClassName:@"PlaceObject"];
+        
+        
+        
+        //[placeObject setObject:point forKey:@"location"];
+        //[placeObject setObject:@"San Francisco" forKey:@"name"];
+        //[placeObject saveInBackground];
+        
+        
+        let query = PFQuery(className: "UserLocations")
+        query.whereKey("username", equalTo:usernameLabel.text!)
+        //line will test all above constraints
+        query.findObjectsInBackgroundWithBlock{(objects,error) -> Void in
+            if error == nil{
+                if let returnedobjects = objects
+                {
+                    for object in returnedobjects
+                    {
+                        //set PFgeopoint location to parse here:
+                        
+                        
+                        
+                        
+                        object.saveInBackground()
+                        
+                        //constant printing
+                        print("Location is: ", self.myLocations[self.myLocations.count - 1])
+                    }
+                }
+            }
         }
+        
+        
+        
+        
+        
     }
     
     
@@ -67,7 +101,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
-
+        
         
         let query = PFQuery(className: "UserLocations")
         //query constraint works cool
@@ -99,7 +133,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         }
         
         
-        
         //trying to update date
         //look up updating objects on parse website to update date when button is clicked. Then set restraints
        // query.findObjectsInBackgroundWithBlock {
@@ -112,7 +145,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
       //      }
     //    }
 
-        
         
         
 
