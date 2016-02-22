@@ -40,6 +40,37 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         
         self.manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
+        
+        //If clock in date is nil display text as nil
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+
+        let query = PFQuery(className: "UserLocations")
+        query.whereKey("username", equalTo:usernameLabel.text!)
+        //line will test all above constraints
+        query.findObjectsInBackgroundWithBlock{(objects,error) -> Void in
+            if error == nil{
+                if let returnedobjects = objects
+                {
+                    for object in returnedobjects
+                    {
+                        if(object["clockInTime"] != nil)
+                        {
+                            let dateString = formatter.stringFromDate(object["clockInTime"] as! NSDate)
+                            
+                            self.locationLabel.text = dateString
+                        }
+                        
+                        
+                        object.saveInBackground()
+                        
+                    }
+                }
+            }
+        }
+
 
     }
     
@@ -50,7 +81,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         
         geopointArray.append(PFGeoPoint(location: locations[0] as!CLLocation))
         
-        print("Point is: ", geopointArray)
+        //print("Point is: ", geopointArray)
         
         
         let query = PFQuery(className: "UserLocations")
@@ -100,8 +131,12 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     for object in returnedobjects
                     {
                         print("Username is: ", object["username"] as! String)
-                        let dateString1 = formatter.stringFromDate(object["clockInTime"] as! NSDate)
-                        print("Previous clock in date is: ", dateString1)
+                        
+                        if(object["clockInTime"] != nil)
+                        {
+                            let dateString1 = formatter.stringFromDate(object["clockInTime"] as! NSDate)
+                            print("Previous clock in date is: ", dateString1)
+                        }
                         
                         //Updates date
                         object["clockInTime"] = NSDate()
@@ -154,8 +189,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .MediumStyle
         
-        
-        
 
         
         let query = PFQuery(className: "UserLocations")
@@ -182,6 +215,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     let startDate = object["clockInTime"] as! NSDate
                     let endDate = object["clockOutTime"] as! NSDate
                     let calendar = NSCalendar.currentCalendar()
+                    
                     //let datecomponenets = calendar.components(NSCalendarUnit.Second, fromDate: startDate, toDate: endDate, options: [])
                     //let hours = datecomponenets.hour
                     //let minutes = datecomponenets.minute
