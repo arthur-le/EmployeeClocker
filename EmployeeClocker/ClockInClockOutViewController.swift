@@ -19,12 +19,14 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet var usernameLabel: UILabel!
     
     var manager:CLLocationManager!
-    
-    var myLocations: [CLLocation] = []
-    
+
    
-    
     @IBOutlet var locationLabel: UILabel!
+    
+    
+    
+    var geopointArray: [PFGeoPoint] = []
+    
     
     override func viewDidLoad() {
         
@@ -35,30 +37,20 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        self.manager.requestWhenInUseAuthorization();
-        //self.manager.requestAlwaysAuthorization();
+        
+        self.manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
 
     }
+    
+    
 
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         
         
-        //creates location points into myLocations
-        myLocations.append(locations[0] as! CLLocation)
+        geopointArray.append(PFGeoPoint(location: locations[0] as!CLLocation))
         
-        
-        let point = PFGeoPoint(location: locations[0] as!CLLocation)
-        
-        print("Point is: ", point)
-        
-        //PFObject *placeObject = [PFObject objectWithClassName:@"PlaceObject"];
-        
-        
-        
-        //[placeObject setObject:point forKey:@"location"];
-        //[placeObject setObject:@"San Francisco" forKey:@"name"];
-        //[placeObject saveInBackground];
+        print("Point is: ", geopointArray)
         
         
         let query = PFQuery(className: "UserLocations")
@@ -71,21 +63,15 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     for object in returnedobjects
                     {
                         //set PFgeopoint location to parse here:
-                        
-                        
+                        object["locationArray"] = self.geopointArray
                         
                         
                         object.saveInBackground()
                         
-                        //constant printing
-                        print("Location is: ", self.myLocations[self.myLocations.count - 1])
                     }
                 }
             }
         }
-        
-        
-        
         
         
     }
@@ -95,7 +81,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             manager.startUpdatingLocation()
-
+        
         }
         
         let formatter = NSDateFormatter()
@@ -114,19 +100,19 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     for object in returnedobjects
                     {
                         print("Username is: ", object["username"] as! String)
-                        print("Clock in date is: ", object["clockInTime"] as! NSDate)
-                        //set location here
+                        let dateString1 = formatter.stringFromDate(object["clockInTime"] as! NSDate)
+                        print("Previous clock in date is: ", dateString1)
+                        
+                        //Updates date
                         object["clockInTime"] = NSDate()
                         
                         let dateString = formatter.stringFromDate(object["clockInTime"] as! NSDate)
-                        
                         print("New clock in date is: ", dateString)
                         
                         self.locationLabel.text = dateString
                         object.saveInBackground()
                         
-                        
-                        print("Location is: ", self.myLocations[self.myLocations.count - 1])
+
                     }
                 }
             }
@@ -164,6 +150,14 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     
     @IBAction func clockOutAction(sender: UIButton) {
         
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        
+        
+
+        
         let query = PFQuery(className: "UserLocations")
         //query constraint works cool
         query.whereKey("username", equalTo:usernameLabel.text!)
@@ -174,9 +168,40 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                 {
                   for object in returnedobjects
                   {
-                    print("Username is: ", object["username"] as! String)
-                    print("Clock n date is: ", object["clockInTime"] as! NSDate)
-                    print("Location is: ", object["location"] as! String)
+                    let dateString1 = formatter.stringFromDate(object["clockInTime"] as! NSDate)
+                    print("Your clock in date and time was: ", dateString1)
+                    
+                    object["clockOutTime"] = NSDate()
+
+                    
+                    let dateString2 = formatter.stringFromDate(object["clockOutTime"] as! NSDate)
+                    print("Your clock out date and time is: ", dateString2)
+                    
+                    object.saveInBackground()
+                    
+                    let startDate = object["clockInTime"] as! NSDate
+                    let endDate = object["clockOutTime"] as! NSDate
+                    let calendar = NSCalendar.currentCalendar()
+                    //let datecomponenets = calendar.components(NSCalendarUnit.Second, fromDate: startDate, toDate: endDate, options: [])
+                    //let hours = datecomponenets.hour
+                    //let minutes = datecomponenets.minute
+                    //let seconds = datecomponenets.second
+                    
+                    let hourMinuteComponents: NSCalendarUnit = [.Hour, .Minute, .Second]
+                    let timeDifference = calendar.components(
+                        hourMinuteComponents,
+                        fromDate: startDate,
+                        toDate: endDate,
+                        options: [])
+                    //timeDifference.hour
+                    //timeDifference.minute
+                    //timeDifference.second
+                    
+                    print("\nTotal Time Clock In Is:")
+                    
+                    print(timeDifference.hour, " Hours, ",timeDifference.minute, " Minutes, and ", timeDifference.second + 1, " Seconds.")
+
+
                   }
                 }
             }
@@ -210,7 +235,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     
     
     func timeToMoveOn() {
-        //delelted the segue, gotta re-add if want to use
         self.performSegueWithIdentifier("transitionToMap", sender: self)
     }
 

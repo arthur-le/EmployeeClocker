@@ -146,8 +146,8 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
                     {
                         for object in returnedobjects
                         {
-                            print("Username is: ", object["username"] as! String)
-                            print("Clock in date is: ", object["clockInTime"] as! NSDate)
+                            //print("Username is: ", object["username"] as! String)
+                            //print("Clock in date is: ", object["clockInTime"] as! NSDate)
                             
                             
                             
@@ -159,15 +159,16 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
                             
                             
                             
-                            
                             let locationString = (object["locationArray"])
                             
                             //print("New clock in date is: ", locationString)
 
                             object.saveInBackground()
+                        
+                            //print("Location is: ", self.myLocations[self.myLocations.count - 1])
                             
-                            
-                            print("Location is: ", self.myLocations[self.myLocations.count - 1])
+                            //testing parse pull pfgeopoint array. should match other print statemnt
+                            //print("Location array is: ",  object["locationArray"])
                         }
                     }
                 }
@@ -175,9 +176,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             
             
             
-            
-            
-            
+
             
             
             
@@ -221,6 +220,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
     @IBAction private func onAdd(sender: AnyObject) {
         var coordinate = mapView.centerCoordinate
         //var radius = Double(radiusTextField.text!)
@@ -229,6 +229,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         var eventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? EventType.OnEntry : EventType.OnExit
         delegate!.addGeotificationViewController(self, didAddCoordinate: coordinate, identifier: identifier, note: note!, eventType: eventType)
     }
+    
     
     @IBAction private func onZoomToCurrentLocation(sender: AnyObject) {
         zoomToUserLocationInMapView(mapView)
