@@ -23,6 +23,8 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
    
     @IBOutlet var locationLabel: UILabel!
     
+    @IBOutlet var clockOutLabel: UILabel!
+    
     
     
     var geopointArray: [PFGeoPoint] = []
@@ -61,6 +63,13 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                             let dateString = formatter.stringFromDate(object["clockInTime"] as! NSDate)
                             
                             self.locationLabel.text = dateString
+                        }
+                        
+                        if(object["clockOutTime"] != nil)
+                        {
+                            let dateString = formatter.stringFromDate(object["clockOutTime"] as! NSDate)
+                            
+                            self.clockOutLabel.text = dateString
                         }
                         
                         
@@ -183,6 +192,8 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         
     }
     
+    
+    
     @IBAction func clockOutAction(sender: UIButton) {
         
         let formatter = NSDateFormatter()
@@ -202,7 +213,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                   for object in returnedobjects
                   {
                     let dateString1 = formatter.stringFromDate(object["clockInTime"] as! NSDate)
-                    print("Your clock in date and time was: ", dateString1)
+                    print("\nYour clock in date and time was: ", dateString1)
                     
                     object["clockOutTime"] = NSDate()
 
@@ -230,6 +241,10 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     //timeDifference.hour
                     //timeDifference.minute
                     //timeDifference.second
+                    
+                    let dateString = formatter.stringFromDate(object["clockOutTime"] as! NSDate)
+                    
+                    self.clockOutLabel.text = dateString
                     
                     print("\nTotal Time Clock In Is:")
                     
