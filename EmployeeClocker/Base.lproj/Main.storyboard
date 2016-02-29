@@ -180,7 +180,6 @@
         <!--Clock In Clock Out View Controller-->
         <scene sceneID="VYx-sP-qwY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r0j-qz-oM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ClockScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NR3-2o-qkp" customClass="ClockInClockOutViewController" customModule="EmployeeClocker" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="foa-RQ-djs"/>
@@ -271,6 +270,7 @@
                         <segue destination="S3e-xr-2Y3" kind="modal" identifier="transitionToMap" id="iWh-WW-rkg"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r0j-qz-oM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2055" y="346"/>
         </scene>
@@ -601,6 +601,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Sd1-9h-pFc"/>
-        <segue reference="pgz-2Z-W9O"/>
+        <segue reference="2xj-Lm-fVo"/>
     </inferredMetricsTieBreakers>
 </document>

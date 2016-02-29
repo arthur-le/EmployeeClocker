@@ -11,7 +11,8 @@ import MapKit
 import Foundation
 import Parse
 
- var yourVariable:UIViewController!
+var yourVariable:UIViewController!
+
 
 class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
@@ -26,9 +27,8 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet var clockOutLabel: UILabel!
     
     
-    
     var geopointArray: [PFGeoPoint] = []
-    
+
     
     override func viewDidLoad() {
         
@@ -86,12 +86,13 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     
 
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
-        
-        
+
         geopointArray.append(PFGeoPoint(location: locations[0] as!CLLocation))
+        //myArray.append(locations[0] as!CLLocation)
+        
         
         //print("Point is: ", geopointArray)
-        
+        //print("Point is: ", myArray)
         
         let query = PFQuery(className: "UserLocations")
         query.whereKey("username", equalTo:usernameLabel.text!)
@@ -104,6 +105,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     {
                         //set PFgeopoint location to parse here:
                         object["locationArray"] = self.geopointArray
+                        //object["locationArray"] = self.myArray
                         
                         
                         object.saveInBackground()
@@ -248,7 +250,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     
                     print("\nTotal Time Clock In Is:")
                     
-                    print(timeDifference.hour, " Hours, ",timeDifference.minute, " Minutes, and ", timeDifference.second + 1, " Seconds.")
+                    print(timeDifference.hour, " Hours, ",timeDifference.minute, " Minutes, and ", timeDifference.second, " Seconds.")
 
 
                   }
@@ -276,11 +278,16 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         
         
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse{
-            manager.startUpdatingLocation()
+            //manager.startUpdatingLocation()
             timeToMoveOn()
         }
         
     }
+    
+    
+
+    
+    
     
     
     func timeToMoveOn() {
