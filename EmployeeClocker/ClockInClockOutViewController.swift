@@ -13,6 +13,9 @@ import Parse
 
 var yourVariable:UIViewController!
 
+//global var
+var geopointArray: [PFGeoPoint] = []
+
 
 class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate{
     
@@ -27,8 +30,6 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet var clockOutLabel: UILabel!
     
     
-    var geopointArray: [PFGeoPoint] = []
-
     
     override func viewDidLoad() {
         
@@ -104,7 +105,7 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                     for object in returnedobjects
                     {
                         //set PFgeopoint location to parse here:
-                        object["locationArray"] = self.geopointArray
+                        object["locationArray"] = geopointArray
                         //object["locationArray"] = self.myArray
                         
                         

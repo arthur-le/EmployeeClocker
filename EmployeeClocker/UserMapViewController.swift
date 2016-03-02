@@ -72,8 +72,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         
-        //load users previous data
-        loadMapQuery()
+        
         
         //check for location changes
         //if locations change, calls func locationManager
@@ -85,6 +84,9 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         //Setup our Map View
         mapView.delegate = self
         mapView.showsUserLocation = true
+        
+        //load users previous data
+        loadMapQuery()
         
 
         
@@ -107,6 +109,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
                         self.descLocation = object["locationArray"] as! [PFGeoPoint]
                         //print("desclocation is: ", self.descLocation)
                           print("View controller LOADED")
+                        print("Initial location is: ", self.descLocation[0])
                         
                         for index in 0...self.descLocation.count
                         {
@@ -115,11 +118,10 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
                             self.temp.append(CLLocationCoordinate2D(latitude: latitude, longitude: longtitude))
                             let polyline = MKPolyline(coordinates: &self.temp, count: self.temp.count)
                             self.mapView.addOverlay(polyline)
-                            
-                            print("Temp contains: ",self.temp)
+                        
 
                         }
-                        print("exiting for loop")
+
                         
                     }
                 }
