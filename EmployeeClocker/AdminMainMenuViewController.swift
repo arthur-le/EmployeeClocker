@@ -12,6 +12,10 @@ class AdminMainMenuViewController: UIViewController{
 
     @IBOutlet var usernameLabel: UILabel!
     
+
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //set username
@@ -19,5 +23,25 @@ class AdminMainMenuViewController: UIViewController{
         
     }
 
+
+    
+    
+    
+    
+    @IBAction func userListButton(sender: UIButton) {
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    @IBAction func userMapViewButton(sender: UIButton) {
+    }
+    
+    
+    
     
 }

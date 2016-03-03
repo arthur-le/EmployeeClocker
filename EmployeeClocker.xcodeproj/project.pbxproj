@@ -14,7 +14,6 @@
 		840821581C56DD6800F3B4D6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840821561C56DD6800F3B4D6 /* Utilities.swift */; settings = {ASSET_TAGS = (); }; };
 		842D20BD1C46F8D10046E8F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D20BC1C46F8D10046E8F7 /* AppDelegate.swift */; };
 		842D20BF1C46F8D10046E8F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D20BE1C46F8D10046E8F7 /* ViewController.swift */; };
-		842D20C21C46F8D10046E8F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D20C01C46F8D10046E8F7 /* Main.storyboard */; };
 		842D20C51C46F8D10046E8F7 /* testApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 842D20C31C46F8D10046E8F7 /* testApp.xcdatamodeld */; };
 		842D20C71C46F8D10046E8F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842D20C61C46F8D10046E8F7 /* Assets.xcassets */; };
 		842D20D51C46F8D10046E8F7 /* EmployeeClockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D20D41C46F8D10046E8F7 /* EmployeeClockerTests.swift */; };
@@ -38,6 +37,12 @@
 		84DFC9E71C50126300CB2F73 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DFC9B41C5010DA00CB2F73 /* CFNetwork.framework */; };
 		84DFC9E81C50126300CB2F73 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DFC9B21C5010D300CB2F73 /* AudioToolbox.framework */; };
 		84DFC9EA1C50537E00CB2F73 /* ClockInClockOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFC9E91C50537D00CB2F73 /* ClockInClockOutViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		84E76A3F1C87664A001A665F /* AdminViewOfUserMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A3E1C87664A001A665F /* AdminViewOfUserMapVC.swift */; settings = {ASSET_TAGS = (); }; };
+		84E76A411C877229001A665F /* AdminUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A401C877229001A665F /* AdminUserList.swift */; settings = {ASSET_TAGS = (); }; };
+		84E76A421C879359001A665F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D20C01C46F8D10046E8F7 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		84E76A471C87A0D4001A665F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A441C87A0D4001A665F /* Meal.swift */; settings = {ASSET_TAGS = (); }; };
+		84E76A481C87A0D4001A665F /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A451C87A0D4001A665F /* MealTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		84E76A491C87A0D4001A665F /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A461C87A0D4001A665F /* MealTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		84EA997C1C49765A00FB5C45 /* temp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84EA997B1C49765A00FB5C45 /* temp.jpg */; settings = {ASSET_TAGS = (); }; };
 		84EA99841C499B8400FB5C45 /* EmployeeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA99831C499B8400FB5C45 /* EmployeeLoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		84EA99881C49AB6A00FB5C45 /* AdminLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA99871C49AB6A00FB5C45 /* AdminLoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -100,6 +105,11 @@
 		84DFC9CE1C50119E00CB2F73 /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseTwitterUtils.framework; sourceTree = "<group>"; };
 		84DFC9CF1C50119E00CB2F73 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		84DFC9E91C50537D00CB2F73 /* ClockInClockOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockInClockOutViewController.swift; sourceTree = "<group>"; };
+		84E76A3E1C87664A001A665F /* AdminViewOfUserMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminViewOfUserMapVC.swift; path = ../AdminViewOfUserMapVC.swift; sourceTree = "<group>"; };
+		84E76A401C877229001A665F /* AdminUserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminUserList.swift; sourceTree = "<group>"; };
+		84E76A441C87A0D4001A665F /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		84E76A451C87A0D4001A665F /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
+		84E76A461C87A0D4001A665F /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		84EA997B1C49765A00FB5C45 /* temp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = temp.jpg; sourceTree = "<group>"; };
 		84EA99831C499B8400FB5C45 /* EmployeeLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmployeeLoginViewController.swift; path = ../EmployeeLoginViewController.swift; sourceTree = "<group>"; };
 		84EA99871C49AB6A00FB5C45 /* AdminLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminLoginViewController.swift; sourceTree = "<group>"; };
@@ -186,7 +196,12 @@
 				840821551C56DD6800F3B4D6 /* Geotification.swift */,
 				840821561C56DD6800F3B4D6 /* Utilities.swift */,
 				84EA99871C49AB6A00FB5C45 /* AdminLoginViewController.swift */,
+				84E76A401C877229001A665F /* AdminUserList.swift */,
 				84F9742E1C52F5F80089F68E /* AdminMainMenuViewController.swift */,
+				84E76A3E1C87664A001A665F /* AdminViewOfUserMapVC.swift */,
+				84E76A441C87A0D4001A665F /* Meal.swift */,
+				84E76A451C87A0D4001A665F /* MealTableViewController.swift */,
+				84E76A461C87A0D4001A665F /* MealTableViewCell.swift */,
 				84EA997B1C49765A00FB5C45 /* temp.jpg */,
 				842D20C61C46F8D10046E8F7 /* Assets.xcassets */,
 				842D20CB1C46F8D10046E8F7 /* Info.plist */,
@@ -349,8 +364,8 @@
 			files = (
 				84EA997C1C49765A00FB5C45 /* temp.jpg in Resources */,
 				842D20C71C46F8D10046E8F7 /* Assets.xcassets in Resources */,
-				842D20C21C46F8D10046E8F7 /* Main.storyboard in Resources */,
 				840821501C5696FA00F3B4D6 /* parse-library-1.12.0 in Resources */,
+				84E76A421C879359001A665F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,11 +392,16 @@
 			files = (
 				84EA99841C499B8400FB5C45 /* EmployeeLoginViewController.swift in Sources */,
 				842D20BF1C46F8D10046E8F7 /* ViewController.swift in Sources */,
+				84E76A471C87A0D4001A665F /* Meal.swift in Sources */,
 				840821581C56DD6800F3B4D6 /* Utilities.swift in Sources */,
+				84E76A491C87A0D4001A665F /* MealTableViewCell.swift in Sources */,
 				84F9742F1C52F5F80089F68E /* AdminMainMenuViewController.swift in Sources */,
+				84E76A3F1C87664A001A665F /* AdminViewOfUserMapVC.swift in Sources */,
 				840821571C56DD6800F3B4D6 /* Geotification.swift in Sources */,
 				840821521C56D99700F3B4D6 /* UserMapViewController.swift in Sources */,
 				84EA99881C49AB6A00FB5C45 /* AdminLoginViewController.swift in Sources */,
+				84E76A411C877229001A665F /* AdminUserList.swift in Sources */,
+				84E76A481C87A0D4001A665F /* MealTableViewController.swift in Sources */,
 				842D20C51C46F8D10046E8F7 /* testApp.xcdatamodeld in Sources */,
 				84DFC9EA1C50537E00CB2F73 /* ClockInClockOutViewController.swift in Sources */,
 				842D20BD1C46F8D10046E8F7 /* AppDelegate.swift in Sources */,

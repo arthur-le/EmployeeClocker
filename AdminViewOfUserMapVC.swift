@@ -1,10 +1,11 @@
 //
-//  UserMapViewController.swift
+//  AdminViewOfUserMapVC.swift
 //  EmployeeClocker
 //
-//  Created by Admin on 1/25/16.
+//  Created by Admin on 3/2/16.
 //  Copyright © 2016 Admin. All rights reserved.
 //
+
 
 import UIKit
 import MapKit
@@ -12,12 +13,12 @@ import CoreLocation
 import Foundation
 import Parse
 
-protocol AddGeotificationsViewControllerDelegate {
-    func addGeotificationViewController(controller: UserMapViewController, didAddCoordinate coordinate: CLLocationCoordinate2D,
-        identifier: String, note: String, eventType: EventType)
-}
+//protocol AddGeotificationsViewControllerDelegate {
+  //  func addGeotificationViewController(controller: UserMapViewController, didAddCoordinate coordinate: CLLocationCoordinate2D,
+    //    identifier: String, note: String, eventType: EventType)
+//}
 
-class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocationManagerDelegate{
+class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate, CLLocationManagerDelegate{
     
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var zoomButton: UIBarButtonItem!
@@ -38,8 +39,8 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     
     
     var manager:CLLocationManager!
-
-
+    
+    
     @IBAction func zoomToUserButton(sender: UIButton) {
         zoomToUserLocationInMapView(mapView)
     }
@@ -56,7 +57,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     
     var descLocation: [PFGeoPoint] = []
     var temp: [CLLocationCoordinate2D] = []
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +67,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         addButton.enabled = false
         
         tableView.tableFooterView = UIView()
-      
+        
         
         manager = CLLocationManager()
         manager.delegate = self
@@ -89,9 +90,10 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         loadMapQuery()
         
         
+        
     }
     
-
+    
     func loadMapQuery() {
         
         let query = PFQuery(className: "UserLocations")
@@ -107,7 +109,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
                         //print("Geopoint is: ", object["locationArray"])
                         self.descLocation = object["locationArray"] as! [PFGeoPoint]
                         //print("desclocation is: ", self.descLocation)
-                          print("View controller LOADED")
+                        print("View controller LOADED")
                         print("Initial location is: ", self.descLocation[0])
                         
                         for index in 0...self.descLocation.count
@@ -117,10 +119,10 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
                             self.temp.append(CLLocationCoordinate2D(latitude: latitude, longitude: longtitude))
                             let polyline = MKPolyline(coordinates: &self.temp, count: self.temp.count)
                             self.mapView.addOverlay(polyline)
-                        
-
+                            
+                            
                         }
-
+                        
                         
                     }
                 }
@@ -164,7 +166,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             let c1 = myLocations[sourceIndex].coordinate
             let c2 = myLocations[destinationIndex].coordinate
             locationCoordinates.append(c1)
-                  
+            
             
             
             var a = [c1, c2]
@@ -224,16 +226,12 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         var identifier = NSUUID().UUIDString
         var note = noteTextField.text
         var eventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? EventType.OnEntry : EventType.OnExit
-        delegate!.addGeotificationViewController(self, didAddCoordinate: coordinate, identifier: identifier, note: note!, eventType: eventType)
+        //delegate!.addGeotificationViewController(self, didAddCoordinate: coordinate, identifier: identifier, note: note!, eventType: eventType)
     }
     
     
     @IBAction private func onZoomToCurrentLocation(sender: AnyObject) {
         zoomToUserLocationInMapView(mapView)
+
     }
-    
-    
-    
-    
-    
 }
