@@ -278,10 +278,10 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
         
         
         
-        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse{
-            //manager.startUpdatingLocation()
-            timeToMoveOn()
-        }
+        //if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse{
+        //    //manager.startUpdatingLocation()
+        //    timeToMoveOn()
+        //}
         
     }
     
@@ -291,9 +291,9 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
     
     
     
-    func timeToMoveOn() {
-        self.performSegueWithIdentifier("transitionToMap", sender: self)
-    }
+    //func timeToMoveOn() {
+    //    self.performSegueWithIdentifier("transitionToMap", sender: self)
+   // }
 
     
     

@@ -46,15 +46,16 @@ class MealTableViewController: UITableViewController {
         
         
         let photo1 = UIImage(named: "temp.jpg")!
-        let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4)!
+        let meal1 = Meal(name: "Caprese Salad", photo: photo1)!
         
         let photo2 = UIImage(named: "temp.jpg")!
-        let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5)!
+        let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2)!
+        print("Loaded objects")
         
-        let photo3 = UIImage(named: "temp.jpg")!
-        let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3)!
+        //let photo3 = UIImage(named: "temp.jpg")!
+        //let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3)!
         
-        meals += [meal1, meal2, meal3]
+        meals += [meal1, meal2]
     }
 
     override func didReceiveMemoryWarning() {
