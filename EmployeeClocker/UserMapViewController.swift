@@ -19,20 +19,20 @@ protocol AddGeotificationsViewControllerDelegate {
 
 class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocationManagerDelegate{
     
-    @IBOutlet var addButton: UIBarButtonItem!
-    @IBOutlet var zoomButton: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var zoomButton: UIBarButtonItem!
     
     @IBOutlet weak var eventTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var radiusTextField: UITextField!
-    @IBOutlet var usernameTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     
     
-    @IBOutlet var mySwitch: UISwitch!
+    @IBOutlet weak var mySwitch: UISwitch!
     
     
-    @IBOutlet var userText: UILabel!
-    @IBOutlet var employeeUsername: UILabel!
-    @IBOutlet var detailTextField: UITextField!
+    @IBOutlet weak var userText: UILabel!
+    @IBOutlet weak var employeeUsername: UILabel!
+    @IBOutlet weak var detailTextField: UITextField!
     
     //var yourVariable:UIViewController!
     
@@ -116,7 +116,10 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
                             let longtitude: CLLocationDegrees = self.descLocation[index].longitude
                             self.temp.append(CLLocationCoordinate2D(latitude: latitude, longitude: longtitude))
                             let polyline = MKPolyline(coordinates: &self.temp, count: self.temp.count)
-                            self.mapView.addOverlay(polyline)
+                            
+                            if self.mapView != nil{
+                                self.mapView.addOverlay(polyline)
+                            }
                         
 
                         }
@@ -134,6 +137,11 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     //constantly called as location changes
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         
+        
+        
+        if self.mapView == nil{
+            mySwitch.setOn(false, animated: false);
+        }
         
         if mySwitch.on {
             
@@ -183,7 +191,10 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
             //long and lat coordinates &a, count: a.count
             
             let polyline = MKPolyline(coordinates: &a, count: a.count)
-            mapView.addOverlay(polyline)
+            
+            if self.mapView != nil{
+                mapView.addOverlay(polyline)
+            }
             
             
             
@@ -233,7 +244,24 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     }
     
     
-    
+    //deallocate map view when going back to previous screen
+    @IBAction func backButton(sender: UIButton) {
+            
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
+        }
+        
+        self.mapView.mapType = MKMapType.Hybrid
+        self.mapView.mapType = MKMapType.Standard
+        self.mapView.showsUserLocation = false;
+        self.mapView.delegate = nil;
+        self.mapView.removeFromSuperview()
+        self.mapView = nil;
+
+        
+        
+    }
+
     
     
 }
