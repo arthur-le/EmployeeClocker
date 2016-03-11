@@ -18,7 +18,7 @@ import Parse
     //    identifier: String, note: String, eventType: EventType)
 //}
 
-class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate, CLLocationManagerDelegate{
+class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate{
     
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var zoomButton: UIBarButtonItem!
@@ -38,12 +38,8 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate, CLLocationM
     //var yourVariable:UIViewController!
     
     
-    var manager:CLLocationManager!
-    
-    
-    @IBAction func zoomToUserButton(sender: UIButton) {
-        zoomToUserLocationInMapView(mapView)
-    }
+    //var manager:CLLocationManager!
+
     
     
     @IBOutlet weak var noteTextField: UITextField!
@@ -61,34 +57,39 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate, CLLocationM
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mapView.showsUserLocation = false;
         
-        employeeUsername.text = EmployeeLoginViewController().getUsername()
+        employeeUsername.text = AdminUserList().getUsername()
         
-        addButton.enabled = false
         
         tableView.tableFooterView = UIView()
         
         
-        manager = CLLocationManager()
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
+        //manager = CLLocationManager()
+        //manager.delegate = self
+        //manager.desiredAccuracy = kCLLocationAccuracyBest
         
         
         
         //check for location changes
         //if locations change, calls func locationManager
-        if CLLocationManager.locationServicesEnabled() {
-            manager.startUpdatingLocation()
-        }
         
         
         //Setup our Map View
         mapView.delegate = self
-        mapView.showsUserLocation = true
+   
         
         //load users previous data
         loadMapQuery()
         
+        
+        //to fit to coordinates
+        //MKCoordinateRegionMake
+        
+        //if let coordinate = mapView.userLocation.location?.coordinate {
+        //    let region = MKCoordinateRegionMakeWithDistance(coordinate, 9000, 9000)
+          //  mapView.setRegion(region, animated: true)
+       // }
         
         
     }
@@ -98,7 +99,7 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate, CLLocationM
         
         let query = PFQuery(className: "UserLocations")
         //query constraint works cool
-        query.whereKey("username", equalTo:EmployeeLoginViewController().getUsername())
+        query.whereKey("username", equalTo:AdminUserList().getUsername())
         //line will test all above constraints
         query.findObjectsInBackgroundWithBlock{(objects,error) -> Void in
             if error == nil{
@@ -131,72 +132,7 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate, CLLocationM
         
     }
     
-    
-    //sets coordinates to details textfield everytime user moves
-    //constantly called as location changes
-    func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
-        
-        
-        if mySwitch.on {
-            
-            // switch is on
-            let spanX = 0.007
-            let spanY = 0.007
-            var newRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
-            mapView.setRegion(newRegion, animated: true)
-            
-        } else {
-            //switch is off
-        }
-        
-        
-        
-        detailTextField.text = "\(locations[0])"
-        
-        //creates location points into myLocations
-        myLocations.append(locations[0] as! CLLocation)
-        
-        
-        
-        //supposed to draw line between points...
-        if (myLocations.count > 1){
-            var sourceIndex = myLocations.count - 2
-            var destinationIndex = myLocations.count - 1
-            
-            let c1 = myLocations[sourceIndex].coordinate
-            let c2 = myLocations[destinationIndex].coordinate
-            locationCoordinates.append(c1)
-            
-            
-            
-            var a = [c1, c2]
-            //draws from point c1 to point c2
-            //a hold two location points. Both with longitude and latitude values
-            
-            //so poly line data read from 'a' array
-            //print("A is: ", a)'
-            
-            //and all longitudes and lat stored in myLocations array
-            //print("My locations is: ", myLocations)
-            
-            //prints out array holding the coords
-            //print("Location Coordinate is: ", locationCoordinates)
-            
-            //long and lat coordinates &a, count: a.count
-            
-            let polyline = MKPolyline(coordinates: &a, count: a.count)
-            mapView.addOverlay(polyline)
-            
-            
-            
-            
-            
-            
-            
-            
-        }
-    }
-    
+
     
     //poly line testing
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
@@ -210,28 +146,25 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate, CLLocationM
         return nil
     }
     
-    
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
-        addButton.enabled = !radiusTextField.text!.isEmpty && !noteTextField.text!.isEmpty
-    }
-    
-    @IBAction func onCancel(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
+
+
     
     
-    @IBAction private func onAdd(sender: AnyObject) {
-        var coordinate = mapView.centerCoordinate
-        //var radius = Double(radiusTextField.text!)
-        var identifier = NSUUID().UUIDString
-        var note = noteTextField.text
-        var eventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? EventType.OnEntry : EventType.OnExit
-        //delegate!.addGeotificationViewController(self, didAddCoordinate: coordinate, identifier: identifier, note: note!, eventType: eventType)
-    }
-    
-    
-    @IBAction private func onZoomToCurrentLocation(sender: AnyObject) {
-        zoomToUserLocationInMapView(mapView)
+    @IBAction func backButton(sender: UIButton) {
+        
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
+            print("BACK BUTTON HIT")
+        }
+        print("BACK BUTTON HIT")
+        
+        self.mapView.mapType = MKMapType.Hybrid
+        self.mapView.mapType = MKMapType.Standard
+        self.mapView.showsUserLocation = false;
+        self.mapView.delegate = nil;
+        self.mapView.removeFromSuperview()
+        self.mapView = nil;
 
     }
+    
 }

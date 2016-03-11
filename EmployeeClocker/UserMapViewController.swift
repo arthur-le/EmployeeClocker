@@ -196,11 +196,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
                 mapView.addOverlay(polyline)
             }
             
-            
-            
-            
-            
-            
+       
             
             
         }
@@ -220,23 +216,6 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     }
     
     
-    @IBAction func textFieldEditingChanged(sender: UITextField) {
-        addButton.enabled = !radiusTextField.text!.isEmpty && !noteTextField.text!.isEmpty
-    }
-    
-    @IBAction func onCancel(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
-    @IBAction private func onAdd(sender: AnyObject) {
-        var coordinate = mapView.centerCoordinate
-        //var radius = Double(radiusTextField.text!)
-        var identifier = NSUUID().UUIDString
-        var note = noteTextField.text
-        var eventType = (eventTypeSegmentedControl.selectedSegmentIndex == 0) ? EventType.OnEntry : EventType.OnExit
-        delegate!.addGeotificationViewController(self, didAddCoordinate: coordinate, identifier: identifier, note: note!, eventType: eventType)
-    }
     
     
     @IBAction private func onZoomToCurrentLocation(sender: AnyObject) {

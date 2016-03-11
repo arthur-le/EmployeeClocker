@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+var username: String = ""
 
 class AdminUserList: UITableViewController {
     // MARK: Properties
@@ -141,10 +142,22 @@ class AdminUserList: UITableViewController {
     
     //loads the given users map data from parse
     //should pass in users information
-    @IBAction func userMapButton(sender: UIButton) {
+    
+    func getUsername() -> String {
+        return username
+    }
+    
+    
+    @IBAction func userMapButton(sender: UIButton){
+    
+        let button = sender as! UIButton
+        let view = button.superview!
+        let cell = view.superview as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
         
-        
-        
+        username = meals[indexPath!.row].getUsername()
+        print("Username at this row is: ", username)
+    
         
     }
     

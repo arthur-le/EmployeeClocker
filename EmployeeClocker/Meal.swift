@@ -27,5 +27,12 @@ class Meal {
             return nil
         }
     }
+    
+    func getUsername() -> String
+    {
+        return (name)
+    }
+    
+    
 
 }
