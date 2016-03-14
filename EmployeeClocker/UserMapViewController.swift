@@ -217,12 +217,6 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
     
     
     
-    
-    @IBAction private func onZoomToCurrentLocation(sender: AnyObject) {
-        zoomToUserLocationInMapView(mapView)
-    }
-    
-    
     //deallocate map view when going back to previous screen
     @IBAction func backButton(sender: UIButton) {
             

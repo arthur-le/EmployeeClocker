@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yNx-NN-Wfu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vyf-Hk-yd7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -170,24 +170,15 @@
                                     <segue destination="8Ow-fs-cv3" kind="modal" id="YhL-As-R0e"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aln-eP-avr">
-                                <rect key="frame" x="236" y="406" width="129" height="30"/>
-                                <state key="normal" title="Map View of Users"/>
-                                <connections>
-                                    <action selector="userMapViewButton:" destination="xpe-mz-VVf" eventType="touchUpInside" id="Q9s-j5-cCh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tBG-xL-tr3" firstAttribute="leading" secondItem="sgI-cB-XCD" secondAttribute="leadingMargin" id="GJC-gr-AOJ"/>
-                            <constraint firstItem="kGq-IE-AYe" firstAttribute="top" secondItem="Aln-eP-avr" secondAttribute="bottom" constant="164" id="Th3-QE-8kl"/>
                             <constraint firstItem="ylg-85-HnT" firstAttribute="top" secondItem="rZX-83-rT7" secondAttribute="bottom" constant="156" id="VC1-oL-IXt"/>
                             <constraint firstItem="n2E-US-Hfh" firstAttribute="leading" secondItem="tBG-xL-tr3" secondAttribute="trailing" constant="13" id="XYV-zx-8z2"/>
                             <constraint firstItem="tBG-xL-tr3" firstAttribute="top" secondItem="rZX-83-rT7" secondAttribute="bottom" constant="8" symbolic="YES" id="j9q-Fq-cSy"/>
                             <constraint firstItem="ylg-85-HnT" firstAttribute="centerX" secondItem="sgI-cB-XCD" secondAttribute="centerX" id="kTf-ec-36b"/>
                             <constraint firstItem="n2E-US-Hfh" firstAttribute="baseline" secondItem="tBG-xL-tr3" secondAttribute="baseline" id="nDx-CK-4Br"/>
-                            <constraint firstItem="ylg-85-HnT" firstAttribute="centerX" secondItem="Aln-eP-avr" secondAttribute="centerX" id="v42-nx-ysz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -887,8 +878,8 @@
         <image name="temp.jpg" width="3000" height="2138"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gXH-RJ-Xx3"/>
-        <segue reference="Aft-vH-4iv"/>
+        <segue reference="Sd1-9h-pFc"/>
+        <segue reference="YhL-As-R0e"/>
         <segue reference="2xj-Lm-fVo"/>
     </inferredMetricsTieBreakers>
 </document>

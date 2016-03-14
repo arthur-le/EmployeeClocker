@@ -54,6 +54,10 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate{
     var descLocation: [PFGeoPoint] = []
     var temp: [CLLocationCoordinate2D] = []
     
+    var middleOfMap: Int = 0
+    var templatitude: CLLocationDegrees = 0.0
+    var templongitude: CLLocationDegrees = 0.0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +86,7 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate{
         //load users previous data
         loadMapQuery()
         
+       
         
         //to fit to coordinates
         //MKCoordinateRegionMake
@@ -112,12 +117,33 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate{
                         //print("desclocation is: ", self.descLocation)
                         print("View controller LOADED")
                         print("Initial location is: ", self.descLocation[0])
+                        print("Array length is: ", self.descLocation.count)
+                        print("Final location is: ", self.descLocation[self.descLocation.count - 1] )
+                        
+                        self.middleOfMap = self.descLocation.count/2
+                        print("Middle of the map is: ", self.middleOfMap)
+                        self.templatitude = self.descLocation[self.middleOfMap].latitude
+                        self.templongitude = self.descLocation[self.middleOfMap].longitude
+                        
+                        //potential fix
+                       // if let coordinate = mapView.userLocation.location?.coordinate {
+                        //    let region = MKCoordinateRegionMakeWithDistance(coordinate, 9000, 9000)
+                       //     mapView.setRegion(region, animated: true)
+                       // }
+
+                        
+                        //set zoom levels to our coordinates
+                        print("Self longitude is: ", self.templongitude)
+                        print("Self latitude is: ", self.templatitude)
+                        let span = MKCoordinateSpanMake(0.175, 0.175)
+                        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.templatitude, longitude: self.templongitude), span: span)
+                        self.mapView.setRegion(region, animated: true)
                         
                         for index in 0...self.descLocation.count
                         {
                             let latitude: CLLocationDegrees = self.descLocation[index].latitude
-                            let longtitude: CLLocationDegrees = self.descLocation[index].longitude
-                            self.temp.append(CLLocationCoordinate2D(latitude: latitude, longitude: longtitude))
+                            let longitude: CLLocationDegrees = self.descLocation[index].longitude
+                            self.temp.append(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                             let polyline = MKPolyline(coordinates: &self.temp, count: self.temp.count)
                             self.mapView.addOverlay(polyline)
                             
@@ -125,7 +151,11 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate{
                         }
                         
                         
+                        
+                        
                     }
+                 
+                    
                 }
             }
         }
