@@ -149,7 +149,7 @@ class AdminUserList: UITableViewController {
     
     
     @IBAction func userMapButton(sender: UIButton){
-    
+        //calls correct row position to pass to array to pull correct data
         let button = sender as! UIButton
         let view = button.superview!
         let cell = view.superview as! UITableViewCell

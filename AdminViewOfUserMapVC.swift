@@ -113,45 +113,51 @@ class AdminViewOfUserMapVC: UITableViewController,MKMapViewDelegate{
                     for object in returnedobjects
                     {
                         //print("Geopoint is: ", object["locationArray"])
-                        self.descLocation = object["locationArray"] as! [PFGeoPoint]
-                        //print("desclocation is: ", self.descLocation)
-                        print("View controller LOADED")
-                        print("Initial location is: ", self.descLocation[0])
-                        print("Array length is: ", self.descLocation.count)
-                        print("Final location is: ", self.descLocation[self.descLocation.count - 1] )
-                        
-                        self.middleOfMap = self.descLocation.count/2
-                        print("Middle of the map is: ", self.middleOfMap)
-                        self.templatitude = self.descLocation[self.middleOfMap].latitude
-                        self.templongitude = self.descLocation[self.middleOfMap].longitude
-                        
-                        //potential fix
-                       // if let coordinate = mapView.userLocation.location?.coordinate {
-                        //    let region = MKCoordinateRegionMakeWithDistance(coordinate, 9000, 9000)
-                       //     mapView.setRegion(region, animated: true)
-                       // }
-
-                        
-                        //set zoom levels to our coordinates
-                        print("Self longitude is: ", self.templongitude)
-                        print("Self latitude is: ", self.templatitude)
-                        let span = MKCoordinateSpanMake(0.175, 0.175)
-                        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.templatitude, longitude: self.templongitude), span: span)
-                        self.mapView.setRegion(region, animated: true)
-                        
-                        for index in 0...self.descLocation.count
+                        if object["locationArray"] != nil
                         {
-                            let latitude: CLLocationDegrees = self.descLocation[index].latitude
-                            let longitude: CLLocationDegrees = self.descLocation[index].longitude
-                            self.temp.append(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-                            let polyline = MKPolyline(coordinates: &self.temp, count: self.temp.count)
-                            self.mapView.addOverlay(polyline)
+                            self.descLocation = object["locationArray"] as! [PFGeoPoint]
+                            //print("desclocation is: ", self.descLocation)
+                            print("View controller LOADED")
+                            print("Initial location is: ", self.descLocation[0])
+                            print("Array length is: ", self.descLocation.count)
+                            print("Final location is: ", self.descLocation[self.descLocation.count - 1] )
+                            
+                            self.middleOfMap = self.descLocation.count/2
+                            print("Middle of the map is: ", self.middleOfMap)
+                            self.templatitude = self.descLocation[self.middleOfMap].latitude
+                            self.templongitude = self.descLocation[self.middleOfMap].longitude
+                            
+                            //potential fix
+                            // if let coordinate = mapView.userLocation.location?.coordinate {
+                            //    let region = MKCoordinateRegionMakeWithDistance(coordinate, 9000, 9000)
+                            //     mapView.setRegion(region, animated: true)
+                            // }
                             
                             
+                            //set zoom levels to our coordinates
+                            print("Self longitude is: ", self.templongitude)
+                            print("Self latitude is: ", self.templatitude)
+                            let span = MKCoordinateSpanMake(0.075, 0.075)
+                            let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.templatitude, longitude: self.templongitude), span: span)
+                            self.mapView.setRegion(region, animated: true)
+                            
+                            for index in 0...self.descLocation.count
+                            {
+                                let latitude: CLLocationDegrees = self.descLocation[index].latitude
+                                let longitude: CLLocationDegrees = self.descLocation[index].longitude
+                                self.temp.append(CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                                let polyline = MKPolyline(coordinates: &self.temp, count: self.temp.count)
+                                self.mapView.addOverlay(polyline)
+                                
+                                
+                            }
+
                         }
-                        
-                        
-                        
+                        else{
+                            //set label here that user has not clocked in yet
+                            //set detail label here
+                        }
+                       
                         
                     }
                  
