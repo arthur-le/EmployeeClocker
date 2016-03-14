@@ -40,13 +40,13 @@
 		84E76A3F1C87664A001A665F /* AdminViewOfUserMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A3E1C87664A001A665F /* AdminViewOfUserMapVC.swift */; settings = {ASSET_TAGS = (); }; };
 		84E76A411C877229001A665F /* AdminUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A401C877229001A665F /* AdminUserList.swift */; settings = {ASSET_TAGS = (); }; };
 		84E76A421C879359001A665F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 842D20C01C46F8D10046E8F7 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		84E76A471C87A0D4001A665F /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A441C87A0D4001A665F /* Meal.swift */; settings = {ASSET_TAGS = (); }; };
-		84E76A491C87A0D4001A665F /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A461C87A0D4001A665F /* MealTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		84E76A471C87A0D4001A665F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A441C87A0D4001A665F /* User.swift */; settings = {ASSET_TAGS = (); }; };
+		84E76A491C87A0D4001A665F /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E76A461C87A0D4001A665F /* UserTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		84EA997C1C49765A00FB5C45 /* temp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84EA997B1C49765A00FB5C45 /* temp.jpg */; settings = {ASSET_TAGS = (); }; };
 		84EA99841C499B8400FB5C45 /* EmployeeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA99831C499B8400FB5C45 /* EmployeeLoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		84EA99881C49AB6A00FB5C45 /* AdminLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA99871C49AB6A00FB5C45 /* AdminLoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		84EA998A1C49AE9100FB5C45 /* IntroScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA99891C49AE9100FB5C45 /* IntroScreenViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		84F6F6C11C89FCD9000EA111 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6F6C01C89FCD9000EA111 /* MealViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		84F6F6C11C89FCD9000EA111 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6F6C01C89FCD9000EA111 /* UserViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		84F9742F1C52F5F80089F68E /* AdminMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9742E1C52F5F80089F68E /* AdminMainMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -107,13 +107,13 @@
 		84DFC9E91C50537D00CB2F73 /* ClockInClockOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockInClockOutViewController.swift; sourceTree = "<group>"; };
 		84E76A3E1C87664A001A665F /* AdminViewOfUserMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminViewOfUserMapVC.swift; path = ../AdminViewOfUserMapVC.swift; sourceTree = "<group>"; };
 		84E76A401C877229001A665F /* AdminUserList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminUserList.swift; sourceTree = "<group>"; };
-		84E76A441C87A0D4001A665F /* Meal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
-		84E76A461C87A0D4001A665F /* MealTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		84E76A441C87A0D4001A665F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		84E76A461C87A0D4001A665F /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		84EA997B1C49765A00FB5C45 /* temp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = temp.jpg; sourceTree = "<group>"; };
 		84EA99831C499B8400FB5C45 /* EmployeeLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmployeeLoginViewController.swift; path = ../EmployeeLoginViewController.swift; sourceTree = "<group>"; };
 		84EA99871C49AB6A00FB5C45 /* AdminLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminLoginViewController.swift; sourceTree = "<group>"; };
 		84EA99891C49AE9100FB5C45 /* IntroScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroScreenViewController.swift; sourceTree = "<group>"; };
-		84F6F6C01C89FCD9000EA111 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
+		84F6F6C01C89FCD9000EA111 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		84F9742E1C52F5F80089F68E /* AdminMainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminMainMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,9 +199,9 @@
 				84F9742E1C52F5F80089F68E /* AdminMainMenuViewController.swift */,
 				84E76A401C877229001A665F /* AdminUserList.swift */,
 				84E76A3E1C87664A001A665F /* AdminViewOfUserMapVC.swift */,
-				84E76A441C87A0D4001A665F /* Meal.swift */,
-				84E76A461C87A0D4001A665F /* MealTableViewCell.swift */,
-				84F6F6C01C89FCD9000EA111 /* MealViewController.swift */,
+				84E76A441C87A0D4001A665F /* User.swift */,
+				84E76A461C87A0D4001A665F /* UserTableViewCell.swift */,
+				84F6F6C01C89FCD9000EA111 /* UserViewController.swift */,
 				84EA997B1C49765A00FB5C45 /* temp.jpg */,
 				842D20C61C46F8D10046E8F7 /* Assets.xcassets */,
 				842D20CB1C46F8D10046E8F7 /* Info.plist */,
@@ -391,11 +391,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84EA99841C499B8400FB5C45 /* EmployeeLoginViewController.swift in Sources */,
-				84F6F6C11C89FCD9000EA111 /* MealViewController.swift in Sources */,
+				84F6F6C11C89FCD9000EA111 /* UserViewController.swift in Sources */,
 				842D20BF1C46F8D10046E8F7 /* ViewController.swift in Sources */,
-				84E76A471C87A0D4001A665F /* Meal.swift in Sources */,
+				84E76A471C87A0D4001A665F /* User.swift in Sources */,
 				840821581C56DD6800F3B4D6 /* Utilities.swift in Sources */,
-				84E76A491C87A0D4001A665F /* MealTableViewCell.swift in Sources */,
+				84E76A491C87A0D4001A665F /* UserTableViewCell.swift in Sources */,
 				84F9742F1C52F5F80089F68E /* AdminMainMenuViewController.swift in Sources */,
 				84E76A3F1C87664A001A665F /* AdminViewOfUserMapVC.swift in Sources */,
 				840821571C56DD6800F3B4D6 /* Geotification.swift in Sources */,

@@ -13,24 +13,26 @@ var username: String = ""
 class AdminUserList: UITableViewController {
     // MARK: Properties
     
-    var meals = [Meal]()
+    var users = [User]()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         
         // Load the sample data.
-        loadSampleMeals()
-      
+        loadUsers()
+
     }
     
-    func loadSampleMeals() {
-        print("Loading samples meals function")
+    func loadUsers() {
         
         var counter = 0
         var tempname = ""
+        
+
         
         //so each object is a row essentially in the parse database
         let query = PFQuery(className: "UserLocations")
@@ -48,12 +50,11 @@ class AdminUserList: UITableViewController {
                         tempname = object["username"] as! String
                         print("Tempname is: " , tempname)
                         
-                        let newMeal = Meal(name: tempname, photo: photo)!
+                        let newUser = User(name: tempname, photo: photo)!
                         
-                        //self.meals.append(newMeal)
-                        self.meals += [newMeal]
+                        self.users += [newUser]
                         
-                        print("Meal array is: ", self.meals)
+                        print("User array is: ", self.users)
 
                         self.loadView()
                     }
@@ -77,20 +78,19 @@ class AdminUserList: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meals.count
+        return users.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "MealTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MealTableViewCell
+        let cellIdentifier = "UserTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UserTableViewCell
         
-        // Fetches the appropriate meal for the data source layout.
-        let meal = meals[indexPath.row]
+        let user = users[indexPath.row]
         
         //not calling?
-        cell.nameLabel.text = meal.name
-        cell.photoImageView.image = meal.photo
+        cell.nameLabel.text = user.name
+        cell.photoImageView.image = user.photo
         
         return cell
     }
@@ -155,7 +155,7 @@ class AdminUserList: UITableViewController {
         let cell = view.superview as! UITableViewCell
         let indexPath = tableView.indexPathForCell(cell)
         
-        username = meals[indexPath!.row].getUsername()
+        username = users[indexPath!.row].getUsername()
         print("Username at this row is: ", username)
     
         

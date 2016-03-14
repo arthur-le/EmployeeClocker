@@ -215,43 +215,46 @@ class ClockInClockOutViewController: UIViewController, CLLocationManagerDelegate
                 {
                   for object in returnedobjects
                   {
-                    let dateString1 = formatter.stringFromDate(object["clockInTime"] as! NSDate)
-                    print("\nYour clock in date and time was: ", dateString1)
+                    if object["clockInTime"] != nil
+                    {
+                        let dateString1 = formatter.stringFromDate(object["clockInTime"] as! NSDate)
+                        print("\nYour clock in date and time was: ", dateString1)
                     
-                    object["clockOutTime"] = NSDate()
+                        object["clockOutTime"] = NSDate()
 
                     
-                    let dateString2 = formatter.stringFromDate(object["clockOutTime"] as! NSDate)
-                    print("Your clock out date and time is: ", dateString2)
+                        let dateString2 = formatter.stringFromDate(object["clockOutTime"] as! NSDate)
+                        print("Your clock out date and time is: ", dateString2)
                     
-                    object.saveInBackground()
+                        object.saveInBackground()
                     
-                    let startDate = object["clockInTime"] as! NSDate
-                    let endDate = object["clockOutTime"] as! NSDate
-                    let calendar = NSCalendar.currentCalendar()
+                        let startDate = object["clockInTime"] as! NSDate
+                        let endDate = object["clockOutTime"] as! NSDate
+                        let calendar = NSCalendar.currentCalendar()
                     
-                    //let datecomponenets = calendar.components(NSCalendarUnit.Second, fromDate: startDate, toDate: endDate, options: [])
-                    //let hours = datecomponenets.hour
-                    //let minutes = datecomponenets.minute
-                    //let seconds = datecomponenets.second
+                        //let datecomponenets = calendar.components(NSCalendarUnit.Second, fromDate: startDate, toDate: endDate, options: [])
+                        //let hours = datecomponenets.hour
+                        //let minutes = datecomponenets.minute
+                        //let seconds = datecomponenets.second
                     
-                    let hourMinuteComponents: NSCalendarUnit = [.Hour, .Minute, .Second]
-                    let timeDifference = calendar.components(
-                        hourMinuteComponents,
-                        fromDate: startDate,
-                        toDate: endDate,
-                        options: [])
-                    //timeDifference.hour
-                    //timeDifference.minute
-                    //timeDifference.second
+                        let hourMinuteComponents: NSCalendarUnit = [.Hour, .Minute, .Second]
+                        let timeDifference = calendar.components(
+                            hourMinuteComponents,
+                            fromDate: startDate,
+                            toDate: endDate,
+                            options: [])
+                        //timeDifference.hour
+                        //timeDifference.minute
+                        //timeDifference.second
                     
-                    let dateString = formatter.stringFromDate(object["clockOutTime"] as! NSDate)
+                        let dateString = formatter.stringFromDate(object["clockOutTime"] as! NSDate)
                     
-                    self.clockOutLabel.text = dateString
+                        self.clockOutLabel.text = dateString
                     
-                    print("\nTotal Time Clock In Is:")
+                        print("\nTotal Time Clock In Is:")
                     
-                    print(timeDifference.hour, " Hours, ",timeDifference.minute, " Minutes, and ", timeDifference.second, " Seconds.")
+                        print(timeDifference.hour, " Hours, ",timeDifference.minute, " Minutes, and ", timeDifference.second, " Seconds.")
+                    }
 
 
                   }

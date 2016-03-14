@@ -1,5 +1,4 @@
 //
-//  MealTableViewCell.swift
 //  FoodTracker
 //
 //  Copyright © 2015 Apple Inc. All rights reserved.
@@ -8,7 +7,7 @@
 
 import UIKit
 
-class MealTableViewCell: UITableViewCell {
+class UserTableViewCell: UITableViewCell {
     // MARK: Properties
     
     @IBOutlet weak var photoImageView: UIImageView!

@@ -1,5 +1,4 @@
 //
-//  Meal.swift
 //  FoodTracker
 //
 //  Created by Jane Appleseed on 5/26/15.
@@ -9,7 +8,7 @@
 
 import UIKit
 
-class Meal {
+class User {
     // MARK: Properties
     
     var name: String
