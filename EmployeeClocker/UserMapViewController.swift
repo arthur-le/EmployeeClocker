@@ -91,6 +91,7 @@ class UserMapViewController: UITableViewController,MKMapViewDelegate, CLLocation
         
     }
     
+    
 
     func loadMapQuery() {
         
